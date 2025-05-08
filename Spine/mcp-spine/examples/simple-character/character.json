@@ -1,0 +1,169 @@
+{
+  "skeleton": {
+    "hash": "example",
+    "spine": "4.0.64",
+    "x": 0,
+    "y": 0,
+    "width": 200,
+    "height": 300,
+    "images": "./images/",
+    "audio": ""
+  },
+  "bones": [
+    { "name": "root" },
+    { "name": "body", "parent": "root", "x": 0, "y": 50 },
+    { "name": "head", "parent": "body", "x": 0, "y": 100 },
+    { "name": "leftArm", "parent": "body", "x": -30, "y": 80 },
+    { "name": "rightArm", "parent": "body", "x": 30, "y": 80 },
+    { "name": "leftLeg", "parent": "body", "x": -20, "y": -50 },
+    { "name": "rightLeg", "parent": "body", "x": 20, "y": -50 }
+  ],
+  "slots": [
+    { "name": "body", "bone": "body", "attachment": "body" },
+    { "name": "head", "bone": "head", "attachment": "head" },
+    { "name": "leftArm", "bone": "leftArm", "attachment": "arm" },
+    { "name": "rightArm", "bone": "rightArm", "attachment": "arm" },
+    { "name": "leftLeg", "bone": "leftLeg", "attachment": "leg" },
+    { "name": "rightLeg", "bone": "rightLeg", "attachment": "leg" }
+  ],
+  "skins": {
+    "default": {
+      "body": { "body": { "x": 0, "y": 0, "width": 60, "height": 80 } },
+      "head": { "head": { "x": 0, "y": 0, "width": 50, "height": 50 } },
+      "leftArm": { "arm": { "x": 0, "y": 0, "width": 15, "height": 50 } },
+      "rightArm": { "arm": { "x": 0, "y": 0, "width": 15, "height": 50 } },
+      "leftLeg": { "leg": { "x": 0, "y": 0, "width": 20, "height": 60 } },
+      "rightLeg": { "leg": { "x": 0, "y": 0, "width": 20, "height": 60 } }
+    },
+    "alternate": {
+      "head": { "head": { "x": 0, "y": 0, "width": 60, "height": 60 } }
+    }
+  },
+  "animations": {
+    "idle": {
+      "bones": {
+        "body": {
+          "translate": [
+            { "time": 0, "x": 0, "y": 0 },
+            { "time": 0.5, "x": 0, "y": 5 },
+            { "time": 1, "x": 0, "y": 0 }
+          ]
+        },
+        "head": {
+          "rotate": [
+            { "time": 0, "angle": 0 },
+            { "time": 0.3, "angle": 5 },
+            { "time": 0.7, "angle": -5 },
+            { "time": 1, "angle": 0 }
+          ]
+        },
+        "leftArm": {
+          "rotate": [
+            { "time": 0, "angle": 0 },
+            { "time": 0.4, "angle": 15 },
+            { "time": 0.8, "angle": -10 },
+            { "time": 1, "angle": 0 }
+          ]
+        },
+        "rightArm": {
+          "rotate": [
+            { "time": 0, "angle": 0 },
+            { "time": 0.4, "angle": -10 },
+            { "time": 0.8, "angle": 15 },
+            { "time": 1, "angle": 0 }
+          ]
+        }
+      }
+    },
+    "walk": {
+      "bones": {
+        "body": {
+          "translate": [
+            { "time": 0, "x": 0, "y": 0 },
+            { "time": 0.25, "x": 0, "y": 3 },
+            { "time": 0.5, "x": 0, "y": 0 },
+            { "time": 0.75, "x": 0, "y": 3 },
+            { "time": 1, "x": 0, "y": 0 }
+          ]
+        },
+        "leftArm": {
+          "rotate": [
+            { "time": 0, "angle": -30 },
+            { "time": 0.5, "angle": 30 },
+            { "time": 1, "angle": -30 }
+          ]
+        },
+        "rightArm": {
+          "rotate": [
+            { "time": 0, "angle": 30 },
+            { "time": 0.5, "angle": -30 },
+            { "time": 1, "angle": 30 }
+          ]
+        },
+        "leftLeg": {
+          "rotate": [
+            { "time": 0, "angle": 30 },
+            { "time": 0.5, "angle": -30 },
+            { "time": 1, "angle": 30 }
+          ]
+        },
+        "rightLeg": {
+          "rotate": [
+            { "time": 0, "angle": -30 },
+            { "time": 0.5, "angle": 30 },
+            { "time": 1, "angle": -30 }
+          ]
+        }
+      }
+    },
+    "jump": {
+      "bones": {
+        "body": {
+          "translate": [
+            { "time": 0, "x": 0, "y": 0 },
+            { "time": 0.3, "x": 0, "y": -10 },
+            { "time": 0.5, "x": 0, "y": 100 },
+            { "time": 0.7, "x": 0, "y": 50 },
+            { "time": 1, "x": 0, "y": 0 }
+          ]
+        },
+        "leftArm": {
+          "rotate": [
+            { "time": 0, "angle": 0 },
+            { "time": 0.2, "angle": -80 },
+            { "time": 0.5, "angle": -120 },
+            { "time": 0.8, "angle": -40 },
+            { "time": 1, "angle": 0 }
+          ]
+        },
+        "rightArm": {
+          "rotate": [
+            { "time": 0, "angle": 0 },
+            { "time": 0.2, "angle": 80 },
+            { "time": 0.5, "angle": 120 },
+            { "time": 0.8, "angle": 40 },
+            { "time": 1, "angle": 0 }
+          ]
+        },
+        "leftLeg": {
+          "rotate": [
+            { "time": 0, "angle": 0 },
+            { "time": 0.3, "angle": -40 },
+            { "time": 0.5, "angle": -80 },
+            { "time": 0.7, "angle": -40 },
+            { "time": 1, "angle": 0 }
+          ]
+        },
+        "rightLeg": {
+          "rotate": [
+            { "time": 0, "angle": 0 },
+            { "time": 0.3, "angle": 40 },
+            { "time": 0.5, "angle": 80 },
+            { "time": 0.7, "angle": 40 },
+            { "time": 1, "angle": 0 }
+          ]
+        }
+      }
+    }
+  }
+} 

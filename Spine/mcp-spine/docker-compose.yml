@@ -1,0 +1,16 @@
+version: '3'
+
+services:
+  mcp-spine:
+    build:
+      context: .
+      dockerfile: dockerfile
+    container_name: mcp-spine-server
+    ports:
+      - "3005:3005"
+    environment:
+      - PORT=3005
+    volumes:
+      - ../examples:/app/examples:ro
+      - ../projects:/app/projects
+    restart: unless-stopped 

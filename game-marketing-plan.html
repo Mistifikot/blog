@@ -1,0 +1,3378 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Маркетинговый план продвижения игры</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+        
+        :root {
+            --primary: #4361ee;
+            --primary-light: #4895ef;
+            --primary-dark: #3a0ca3;
+            --secondary: #4cc9f0;
+            --accent: #7209b7;
+            --success: #10b981;
+            --warning: #f59e0b;
+            --danger: #ef4444;
+            --dark: #1e293b;
+            --light: #f8fafc;
+            --border-radius: 16px;
+            --glass-bg: rgba(255, 255, 255, 0.7);
+            --glass-bg-dark: rgba(30, 41, 59, 0.7);
+            --blur-size: 10px;
+        }
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+            color: #334155;
+            transition: all 0.3s ease;
+            min-height: 100vh;
+            position: relative;
+        }
+        
+        /* Background shapes for visual appeal */
+        body::before, body::after {
+            content: '';
+            position: fixed;
+            width: 300px;
+            height: 300px;
+            border-radius: 50%;
+            z-index: -1;
+            filter: blur(70px);
+            opacity: 0.3;
+        }
+        
+        body::before {
+            background: var(--primary-light);
+            top: -100px;
+            left: -100px;
+        }
+        
+        body::after {
+            background: var(--secondary);
+            bottom: -100px;
+            right: -100px;
+        }
+        
+        /* Dark mode styles */
+        body.dark-mode {
+            background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+            color: #e2e8f0;
+        }
+        
+        body.dark-mode::before {
+            background: var(--primary-dark);
+            opacity: 0.2;
+        }
+        
+        body.dark-mode::after {
+            background: var(--accent);
+            opacity: 0.2;
+        }
+        
+        body.dark-mode .card,
+        body.dark-mode header,
+        body.dark-mode .checklist-item,
+        body.dark-mode .nav-tab,
+        body.dark-mode footer {
+            background-color: transparent;
+            color: #e2e8f0;
+            border-color: rgba(71, 85, 105, 0.3);
+        }
+        
+        body.dark-mode .card {
+            background: var(--glass-bg-dark);
+        }
+        
+        body.dark-mode .section-title {
+            color: #60a5fa;
+            border-color: rgba(71, 85, 105, 0.3);
+        }
+        
+        body.dark-mode .nav-tab {
+            color: #e2e8f0;
+        }
+        
+        body.dark-mode .nav-tab.active {
+            color: #60a5fa;
+            border-color: #60a5fa;
+            background: rgba(59, 130, 246, 0.1);
+        }
+        
+        body.dark-mode .btn-outline {
+            border-color: #60a5fa;
+            color: #60a5fa;
+        }
+        
+        body.dark-mode .btn-outline:hover {
+            background-color: #60a5fa;
+            color: #1e293b;
+        }
+        
+        body.dark-mode .btn-primary {
+            background-color: #3b82f6;
+            color: #f8fafc;
+        }
+        
+        body.dark-mode .btn-primary:hover {
+            background-color: #2563eb;
+        }
+        
+        body.dark-mode footer {
+            background-color: rgba(15, 23, 42, 0.9);
+        }
+        
+        body.dark-mode .checklist-item {
+            background: rgba(51, 65, 85, 0.5);
+            border-color: rgba(71, 85, 105, 0.3);
+        }
+        
+        body.dark-mode .checklist-item:hover {
+            background: rgba(59, 130, 246, 0.1);
+        }
+        
+        body.dark-mode .checklist-item input[type="checkbox"]:checked + label {
+            color: #94a3b8;
+        }
+        
+        body.dark-mode .search-input {
+            background: rgba(51, 65, 85, 0.5);
+            color: #e2e8f0;
+            border-color: rgba(71, 85, 105, 0.3);
+        }
+        
+        body.dark-mode .search-input::placeholder {
+            color: #94a3b8;
+        }
+        
+        body.dark-mode input,
+        body.dark-mode textarea,
+        body.dark-mode select {
+            background: rgba(51, 65, 85, 0.5);
+            color: #e2e8f0;
+            border-color: rgba(71, 85, 105, 0.3);
+        }
+        
+        /* Glassmorphism effects */
+        .card {
+            background: var(--glass-bg);
+            backdrop-filter: blur(var(--blur-size));
+            -webkit-backdrop-filter: blur(var(--blur-size));
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            border-radius: var(--border-radius);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+            padding: 2rem;
+            transition: all 0.3s ease;
+            overflow: hidden;
+        }
+        
+        .card:hover {
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.12);
+            transform: translateY(-3px);
+        }
+        
+        header {
+            background: var(--glass-bg);
+            backdrop-filter: blur(var(--blur-size));
+            -webkit-backdrop-filter: blur(var(--blur-size));
+            border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
+            padding: 1.5rem 0;
+            margin-bottom: 2rem;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        /* Navigation tabs */
+        .tab-buttons {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            position: relative;
+        }
+        
+        .nav-tab {
+            padding: 0.75rem 1.5rem;
+            border-radius: 1rem 1rem 0 0;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            border-bottom: 3px solid transparent;
+            cursor: pointer;
+            display: inline-block;
+            text-decoration: none;
+            color: inherit;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .nav-tab::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 100%;
+            height: 0;
+            background: rgba(67, 97, 238, 0.1);
+            transition: height 0.3s ease;
+            z-index: -1;
+            border-radius: 1rem 1rem 0 0;
+        }
+        
+        .nav-tab:hover::before {
+            height: 100%;
+        }
+        
+        .nav-tab.active {
+            color: var(--primary);
+            border-bottom-color: var(--primary);
+            font-weight: 600;
+        }
+        
+        .nav-tab.active::before {
+            height: 100%;
+        }
+        
+        /* Buttons */
+        .btn {
+            padding: 0.75rem 1.5rem;
+            border-radius: 1rem;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: all 0.5s ease;
+        }
+        
+        .btn:hover::before {
+            left: 100%;
+        }
+        
+        .btn-primary {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+            color: white;
+            border: none;
+        }
+        
+        .btn-primary:hover {
+            background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 100%);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .btn-outline {
+            border: 2px solid var(--primary);
+            color: var(--primary);
+            background: transparent;
+        }
+        
+        .btn-outline:hover {
+            background-color: var(--primary);
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        /* Checklist items */
+        .checklist-container {
+            background: rgba(255, 255, 255, 0.3);
+            border-radius: 1rem;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.03);
+        }
+        
+        .checklist-item {
+            display: flex;
+            align-items: flex-start;
+            padding: 1rem 1.5rem;
+            border-bottom: 1px solid rgba(226, 232, 240, 0.5);
+            transition: all 0.3s ease;
+            background: rgba(255, 255, 255, 0.5);
+        }
+        
+        .checklist-item:hover {
+            background: rgba(67, 97, 238, 0.05);
+            transform: translateX(5px);
+        }
+        
+        .checklist-item:last-child {
+            border-bottom: none;
+        }
+        
+        .checklist-item input[type="checkbox"] {
+            margin-right: 1rem;
+            margin-top: 0.25rem;
+            width: 1.25rem;
+            height: 1.25rem;
+            border-radius: 0.25rem;
+            cursor: pointer;
+            appearance: none;
+            -webkit-appearance: none;
+            border: 2px solid #cbd5e0;
+            position: relative;
+            transition: all 0.2s ease;
+            flex-shrink: 0;
+        }
+        
+        .checklist-item input[type="checkbox"]:checked {
+            background-color: var(--primary);
+            border-color: var(--primary);
+        }
+        
+        .checklist-item input[type="checkbox"]:checked::after {
+            content: '✓';
+            color: white;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 0.75rem;
+            font-weight: bold;
+        }
+        
+        .checklist-item label {
+            flex: 1;
+            cursor: pointer;
+            line-height: 1.5;
+            transition: all 0.3s ease;
+        }
+        
+        .checklist-item input[type="checkbox"]:checked + label {
+            text-decoration: line-through;
+            color: #94a3b8;
+        }
+        
+        /* Progress bars */
+        .progress-container {
+            height: 0.5rem;
+            width: 100%;
+            background-color: rgba(226, 232, 240, 0.5);
+            border-radius: 1rem;
+            margin: 1rem 0;
+            overflow: hidden;
+        }
+        
+        .progress-bar {
+            height: 100%;
+            border-radius: 1rem;
+            background: linear-gradient(90deg, var(--primary-light) 0%, var(--primary) 100%);
+            width: 0%;
+            transition: width 0.3s ease-in-out;
+        }
+        
+        /* Circular progress */
+        .progress-circle {
+            transition: stroke-dashoffset 0.5s ease-in-out;
+            transform: rotate(-90deg);
+            transform-origin: center;
+            stroke-linecap: round;
+        }
+        
+        /* Form elements */
+        .generator-form select, 
+        .generator-form input, 
+        .generator-form textarea {
+            width: 100%;
+            padding: 0.75rem 1rem;
+            border: 1px solid rgba(203, 213, 225, 0.5);
+            border-radius: 0.75rem;
+            margin-bottom: 1rem;
+            transition: all 0.3s ease;
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(5px);
+            -webkit-backdrop-filter: blur(5px);
+        }
+        
+        .generator-form select:focus,
+        .generator-form input:focus, 
+        .generator-form textarea:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(67, 97, 238, 0.2);
+            transform: translateY(-2px);
+        }
+        
+        /* Section titles */
+        .section-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            padding-bottom: 0.75rem;
+            border-bottom: 2px solid rgba(226, 232, 240, 0.5);
+            color: var(--primary);
+            position: relative;
+        }
+        
+        .section-title::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: -2px;
+            width: 50px;
+            height: 2px;
+            background: var(--primary);
+        }
+        
+        /* Animations */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .animate-fade-in {
+            animation: fadeIn 0.5s ease-in-out;
+        }
+        
+        @keyframes pulseGlow {
+            0% { box-shadow: 0 0 0 0 rgba(67, 97, 238, 0.4); }
+            70% { box-shadow: 0 0 0 10px rgba(67, 97, 238, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(67, 97, 238, 0); }
+        }
+        
+        .pulse-glow {
+            animation: pulseGlow 2s infinite;
+        }
+        
+        /* Footer */
+        footer {
+            background: var(--glass-bg);
+            backdrop-filter: blur(var(--blur-size));
+            -webkit-backdrop-filter: blur(var(--blur-size));
+            border-top: 1px solid rgba(255, 255, 255, 0.3);
+            padding: 2rem 0;
+            margin-top: 3rem;
+        }
+        
+        /* Custom scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        
+        ::-webkit-scrollbar-track {
+            background: rgba(241, 241, 241, 0.5);
+            border-radius: 10px;
+        }
+        
+        ::-webkit-scrollbar-thumb {
+            background: rgba(197, 197, 197, 0.7);
+            border-radius: 10px;
+        }
+        
+        ::-webkit-scrollbar-thumb:hover {
+            background: rgba(163, 163, 163, 0.8);
+        }
+        
+        /* Search input styling */
+        .search-input {
+            padding: 0.75rem 1rem 0.75rem 2.5rem;
+            border-radius: 1rem;
+            border: 1px solid rgba(203, 213, 225, 0.5);
+            background: rgba(255, 255, 255, 0.8);
+            transition: all 0.3s ease;
+        }
+        
+        .search-input:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(67, 97, 238, 0.2);
+            transform: translateY(-2px);
+        }
+        
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .card {
+                padding: 1.5rem;
+                margin-bottom: 1.5rem;
+            }
+            
+            .nav-tab {
+                padding: 0.5rem 1rem;
+                font-size: 0.875rem;
+            }
+            
+            .checklist-item {
+                padding: 0.75rem 1rem;
+            }
+            
+            .section-title {
+                font-size: 1.25rem;
+            }
+        }
+        
+        /* Settings menu */
+        .settings-menu {
+            background: var(--glass-bg);
+            backdrop-filter: blur(var(--blur-size));
+            -webkit-backdrop-filter: blur(var(--blur-size));
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            border-radius: 0.75rem;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+        
+        body.dark-mode .settings-menu {
+            background: var(--glass-bg-dark);
+            border-color: rgba(71, 85, 105, 0.3);
+        }
+        
+        /* Notification styling */
+        .notification {
+            background: var(--glass-bg);
+            backdrop-filter: blur(var(--blur-size));
+            -webkit-backdrop-filter: blur(var(--blur-size));
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            border-radius: 0.75rem;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            padding: 1rem 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+        
+        body.dark-mode .notification {
+            background: var(--glass-bg-dark);
+            border-color: rgba(71, 85, 105, 0.3);
+        }
+        
+        /* Generated result card */
+        #generated-plan-result {
+            border-radius: var(--border-radius);
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.9) 0%, rgba(240, 240, 250, 0.8) 100%);
+            backdrop-filter: blur(var(--blur-size));
+            -webkit-backdrop-filter: blur(var(--blur-size));
+            border: 1px solid rgba(255, 255, 255, 0.5);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+        }
+        
+        body.dark-mode #generated-plan-result {
+            background: linear-gradient(135deg, rgba(30, 41, 59, 0.9) 0%, rgba(15, 23, 42, 0.8) 100%);
+            border-color: rgba(71, 85, 105, 0.3);
+        }
+        
+        /* Reset styling */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* Accessibility: Improved Focus Outline */
+        *:focus-visible {
+            outline: 3px solid var(--primary-light);
+            outline-offset: 2px;
+            box-shadow: 0 0 0 4px rgba(72, 149, 239, 0.3); /* Optional shadow */
+        }
+
+        /* Style for generated tasks */
+        .generated-task {
+            border-left: 4px solid var(--accent);
+            background-color: rgba(114, 9, 183, 0.05);
+        }
+
+        body.dark-mode .generated-task {
+             background-color: rgba(114, 9, 183, 0.15);
+             border-color: var(--accent);
+        }
+
+        /* Priority task styles */
+        .task-high-priority {
+            border-left: 4px solid var(--danger);
+            background-color: rgba(239, 68, 68, 0.05);
+        }
+
+        body.dark-mode .task-high-priority {
+            background-color: rgba(239, 68, 68, 0.15);
+        }
+
+        .task-optional {
+            border-left: 4px solid var(--secondary);
+            background-color: rgba(76, 201, 240, 0.05);
+            opacity: 0.9;
+        }
+
+        body.dark-mode .task-optional {
+            background-color: rgba(76, 201, 240, 0.15);
+        }
+
+        .priority-badge {
+            font-size: 0.7rem;
+            padding: 0.15rem 0.4rem;
+            border-radius: 0.75rem;
+            display: inline-block;
+            margin-left: 0.5rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.03em;
+            vertical-align: middle;
+        }
+
+        .priority-badge.high {
+            background-color: rgba(239, 68, 68, 0.15);
+            color: var(--danger);
+        }
+
+        .priority-badge.optional {
+            background-color: rgba(76, 201, 240, 0.15);
+            color: var(--secondary);
+        }
+
+        body.dark-mode .priority-badge.high {
+            background-color: rgba(239, 68, 68, 0.3);
+        }
+
+        body.dark-mode .priority-badge.optional {
+            background-color: rgba(76, 201, 240, 0.3);
+        }
+
+        /* Drag and drop styles */
+        .checklist-item.dragging {
+            opacity: 0.5;
+            border: 2px dashed var(--primary);
+            background-color: rgba(67, 97, 238, 0.05);
+            transform: scale(0.98);
+        }
+
+        .checklist-item.drag-over {
+            border-top: 2px solid var(--primary);
+        }
+
+        .checklist-item.drag-handle {
+            cursor: grab;
+        }
+
+        .checklist-item.drag-handle:active {
+            cursor: grabbing;
+        }
+
+        /* Custom modal styles */
+        .custom-modal-backdrop {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            backdrop-filter: blur(3px);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 9999;
+            opacity: 0;
+            transition: opacity 0.2s ease-in-out;
+        }
+
+        .custom-modal-backdrop.show {
+            opacity: 1;
+        }
+
+        .custom-modal {
+            background: var(--glass-bg);
+            backdrop-filter: blur(var(--blur-size));
+            border-radius: var(--border-radius);
+            padding: 1.5rem;
+            max-width: 90%;
+            width: 450px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+            transform: translateY(20px);
+            opacity: 0;
+            transition: transform 0.3s ease, opacity 0.3s ease;
+        }
+
+        body.dark-mode .custom-modal {
+            background: var(--glass-bg-dark);
+        }
+
+        .custom-modal.show {
+            transform: translateY(0);
+            opacity: 1;
+        }
+
+        .custom-modal-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+
+        .custom-modal-header i {
+            font-size: 1.5rem;
+            margin-right: 0.75rem;
+        }
+
+        .custom-modal-title {
+            font-size: 1.25rem;
+            font-weight: 600;
+        }
+
+        .custom-modal-body {
+            margin-bottom: 1.5rem;
+        }
+
+        .custom-modal-footer {
+            display: flex;
+            justify-content: flex-end;
+            gap: 0.75rem;
+        }
+
+        /* Celebration animation */
+        @keyframes celebrate {
+            0% { transform: scale(0.5); opacity: 0; }
+            50% { transform: scale(1.1); opacity: 1; }
+            100% { transform: scale(1); opacity: 1; }
+        }
+
+        .celebration-modal {
+            animation: celebrate 0.5s ease-out;
+        }
+
+        .celebration-icon {
+            font-size: 3rem;
+            color: var(--success);
+            display: block;
+            text-align: center;
+            margin-bottom: 1rem;
+        }
+
+        /* Generator validation error messages */
+        .error-message {
+            color: var(--danger);
+            font-size: 0.875rem;
+            margin-top: -0.5rem;
+            margin-bottom: 0.5rem;
+            display: none; /* Hidden by default */
+        }
+
+        /* Button loading state */
+        .btn.loading {
+            position: relative;
+            color: transparent !important; /* Hide text */
+        }
+        .btn.loading::after {
+            content: '';
+            position: absolute;
+            width: 16px;
+            height: 16px;
+            top: calc(50% - 8px);
+            left: calc(50% - 8px);
+            border: 2px solid currentColor;
+            border-right-color: transparent;
+            border-radius: 50%;
+            display: inline-block;
+            animation: spin 0.6s linear infinite;
+            color: white; /* Loader color for primary button */
+        }
+        .btn-outline.loading::after {
+             color: var(--primary); /* Loader color for outline button */
+        }
+        body.dark-mode .btn-outline.loading::after {
+             color: #60a5fa;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        /* Tab Content Visibility */
+        .tab-content {
+            display: none;
+        }
+        .tab-content.active {
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container mx-auto px-6 py-4 flex flex-col md:flex-row items-center justify-between">
+            <div class="flex items-center mb-4 md:mb-0">
+                <div class="flex items-center justify-center w-12 h-12 bg-primary bg-opacity-20 rounded-full mr-4">
+                    <i class="fas fa-gamepad text-2xl text-primary"></i>
+                </div>
+                <div>
+                    <h1 class="text-2xl font-bold text-gray-800 dark:text-gray-100">Маркетинговый план продвижения игры</h1>
+                    <p class="text-gray-600 dark:text-gray-300 text-sm">Структурированный подход к продвижению вашего проекта</p>
+                </div>
+            </div>
+            <div class="flex space-x-3 flex-wrap justify-center md:justify-end">
+                <button id="reset-btn" class="btn btn-outline flex items-center m-1" aria-label="Сбросить весь прогресс">
+                    <i class="fas fa-redo-alt mr-2" aria-hidden="true"></i> Сбросить
+                </button>
+                <button id="import-btn" class="btn btn-outline flex items-center m-1" aria-label="Импортировать данные">
+                    <i class="fas fa-file-import mr-2" aria-hidden="true"></i> Импорт
+                </button>
+                <div class="relative m-1">
+                    <button id="settings-btn" class="btn btn-outline flex items-center" aria-label="Настройки">
+                        <i class="fas fa-cog mr-2" aria-hidden="true"></i> Настройки
+                    </button>
+                    <div id="settings-menu" class="settings-menu absolute right-0 mt-2 w-48 py-2 z-10 hidden">
+                        <a href="#" id="dark-mode-toggle" class="block px-4 py-2 hover:bg-opacity-10 hover:bg-primary transition-all">
+                            <i class="fas fa-moon mr-2" aria-hidden="true"></i> Темная тема
+                        </a>
+                        <a href="#" id="backup-settings" class="block px-4 py-2 hover:bg-opacity-10 hover:bg-primary transition-all">
+                            <i class="fas fa-cloud-upload-alt mr-2" aria-hidden="true"></i> Настройки резервирования
+                        </a>
+                        <a href="#" id="export-data" class="block px-4 py-2 hover:bg-opacity-10 hover:bg-primary transition-all">
+                            <i class="fas fa-file-export mr-2" aria-hidden="true"></i> Экспорт данных
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main content -->
+    <main class="container mx-auto px-4 py-8">
+        <!-- Introduction -->
+        <section class="card mb-8 animate-fade-in">
+            <h2 class="section-title">Введение</h2>
+            <p class="mb-6 leading-relaxed">
+                Маркетинговый план продвижения игры разбивается на ключевые этапы жизненного цикла: анонс, демо-версия, участие в фестивалях (например, Steam Next Fest), релиз и пост-релизная поддержка. Каждый этап требует выполнения ряда задач, представленных в форме интерактивного чеклиста.
+            </p>
+            <div class="bg-blue-50 bg-opacity-50 dark:bg-blue-900 dark:bg-opacity-20 border-l-4 border-primary p-5 rounded-r">
+                <h3 class="font-bold text-primary dark:text-blue-400 mb-3">Как пользоваться планом:</h3>
+                <ul class="list-none pl-2 text-gray-700 dark:text-gray-300 space-y-2">
+                    <li class="flex items-start">
+                        <i class="fas fa-arrow-right text-primary dark:text-blue-400 mt-1 mr-2"></i>
+                        <span>Переключайтесь между вкладками для просмотра задач разных этапов</span>
+                    </li>
+                    <li class="flex items-start">
+                        <i class="fas fa-check text-primary dark:text-blue-400 mt-1 mr-2"></i>
+                        <span>Отмечайте выполненные задачи галочкой</span>
+                    </li>
+                    <li class="flex items-start">
+                        <i class="fas fa-chart-pie text-primary dark:text-blue-400 mt-1 mr-2"></i>
+                        <span>Следите за прогрессом в каждом разделе</span>
+                    </li>
+                    <li class="flex items-start">
+                        <i class="fas fa-magic text-primary dark:text-blue-400 mt-1 mr-2"></i>
+                        <span>Используйте генератор маркетингового плана для создания персонализированного сценария</span>
+                    </li>
+                    <li class="flex items-start">
+                        <i class="fas fa-save text-primary dark:text-blue-400 mt-1 mr-2"></i>
+                        <span>Нажмите "Сохранить прогресс" чтобы ваши отметки сохранились в браузере</span>
+                    </li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- Overall Progress -->
+        <section class="card mb-8 animate-fade-in">
+            <h2 class="section-title">Общий прогресс</h2>
+            <div class="grid grid-cols-1 md:grid-cols-5 gap-6">
+                <div class="text-center">
+                    <div class="relative inline-block w-24 h-24">
+                        <svg class="w-24 h-24">
+                            <circle class="text-gray-200 opacity-20" stroke-width="6" stroke="currentColor" fill="transparent" r="36" cx="48" cy="48"></circle>
+                            <circle class="progress-circle progress-announce text-primary" stroke-width="6" stroke="currentColor" fill="transparent" r="36" cx="48" cy="48" style="stroke-dasharray: 226.2; stroke-dashoffset: 226.2;"></circle>
+                        </svg>
+                        <span class="absolute inset-0 flex items-center justify-center text-lg font-bold text-primary dark:text-blue-400 progress-percent-announce">0%</span>
+                    </div>
+                    <h3 class="mt-3 font-medium">Анонс</h3>
+                </div>
+                <div class="text-center">
+                    <div class="relative inline-block w-24 h-24">
+                        <svg class="w-24 h-24">
+                            <circle class="text-gray-200 opacity-20" stroke-width="6" stroke="currentColor" fill="transparent" r="36" cx="48" cy="48"></circle>
+                            <circle class="progress-circle progress-demo text-primary" stroke-width="6" stroke="currentColor" fill="transparent" r="36" cx="48" cy="48" style="stroke-dasharray: 226.2; stroke-dashoffset: 226.2;"></circle>
+                        </svg>
+                        <span class="absolute inset-0 flex items-center justify-center text-lg font-bold text-primary dark:text-blue-400 progress-percent-demo">0%</span>
+                    </div>
+                    <h3 class="mt-3 font-medium">Демо</h3>
+                </div>
+                <div class="text-center">
+                    <div class="relative inline-block w-24 h-24">
+                        <svg class="w-24 h-24">
+                            <circle class="text-gray-200 opacity-20" stroke-width="6" stroke="currentColor" fill="transparent" r="36" cx="48" cy="48"></circle>
+                            <circle class="progress-circle progress-nextfest text-primary" stroke-width="6" stroke="currentColor" fill="transparent" r="36" cx="48" cy="48" style="stroke-dasharray: 226.2; stroke-dashoffset: 226.2;"></circle>
+                        </svg>
+                        <span class="absolute inset-0 flex items-center justify-center text-lg font-bold text-primary dark:text-blue-400 progress-percent-nextfest">0%</span>
+                    </div>
+                    <h3 class="mt-3 font-medium">Next Fest</h3>
+                </div>
+                <div class="text-center">
+                    <div class="relative inline-block w-24 h-24">
+                        <svg class="w-24 h-24">
+                            <circle class="text-gray-200 opacity-20" stroke-width="6" stroke="currentColor" fill="transparent" r="36" cx="48" cy="48"></circle>
+                            <circle class="progress-circle progress-release text-primary" stroke-width="6" stroke="currentColor" fill="transparent" r="36" cx="48" cy="48" style="stroke-dasharray: 226.2; stroke-dashoffset: 226.2;"></circle>
+                        </svg>
+                        <span class="absolute inset-0 flex items-center justify-center text-lg font-bold text-primary dark:text-blue-400 progress-percent-release">0%</span>
+                    </div>
+                    <h3 class="mt-3 font-medium">Релиз</h3>
+                </div>
+                <div class="text-center">
+                    <div class="relative inline-block w-24 h-24">
+                        <svg class="w-24 h-24">
+                            <circle class="text-gray-200 opacity-20" stroke-width="6" stroke="currentColor" fill="transparent" r="36" cx="48" cy="48"></circle>
+                            <circle class="progress-circle progress-postrelease text-primary" stroke-width="6" stroke="currentColor" fill="transparent" r="36" cx="48" cy="48" style="stroke-dasharray: 226.2; stroke-dashoffset: 226.2;"></circle>
+                        </svg>
+                        <span class="absolute inset-0 flex items-center justify-center text-lg font-bold text-primary dark:text-blue-400 progress-percent-postrelease">0%</span>
+                    </div>
+                    <h3 class="mt-3 font-medium">Пост-релиз</h3>
+                </div>
+            </div>
+        </section>
+
+        <!-- Tabs and Checklists -->
+        <section class="card mb-8 animate-fade-in">
+            <div class="border-b border-gray-200 mb-6">
+                <div class="tab-buttons flex flex-wrap -mb-px">
+                    <a href="#announce" class="nav-tab active" data-target="announce">Анонс</a>
+                    <a href="#demo" class="nav-tab" data-target="demo">Демо</a>
+                    <a href="#nextfest" class="nav-tab" data-target="nextfest">Steam Next Fest</a>
+                    <a href="#release" class="nav-tab" data-target="release">Релиз</a>
+                    <a href="#postrelease" class="nav-tab" data-target="postrelease">Пост-релиз</a>
+                    <a href="#generator" class="nav-tab" data-target="generator">Генератор плана</a>
+                </div>
+            </div>
+
+            <!-- Tab content for Announcement -->
+            <div id="announce" class="tab-content active">
+                <h2 class="section-title">Этап анонса игры</h2>
+                <p class="mb-4">
+                    Этап анонса – это первое публичное появление вашего проекта. Цель этого шага – заявить о игре, привлечь внимание потенциальных игроков и СМИ, заложить основу для сообщества.
+                </p>
+                <div class="progress-container">
+                    <div class="progress-bar" id="announce-progress"></div>
+                </div>
+                <div class="mb-4 text-right text-sm text-gray-600">Выполнено: <span id="announce-completed">0</span> из <span id="announce-total">11</span></div>
+                
+                <div class="checklist-container" data-section="announce">
+                    <div class="checklist-item">
+                        <input type="checkbox" id="announce-1" data-section="announce">
+                        <label for="announce-1">Определить целевую аудиторию (ЦА) и уникальные особенности игры.</label>
+                    </div>
+                    <div class="checklist-item">
+                        <input type="checkbox" id="announce-2" data-section="announce">
+                        <label for="announce-2">Сформировать ключевые сообщения о игре (преимущества, жанр, сюжет).</label>
+                    </div>
+                    <div class="checklist-item">
+                        <input type="checkbox" id="announce-3" data-section="announce">
+                        <label for="announce-3">Подготовить пресс-кит: описание игры, логотип, скриншоты, арт и контакты.</label>
+                    </div>
+                    <div class="checklist-item">
+                        <input type="checkbox" id="announce-4" data-section="announce">
+                        <label for="announce-4">Создать трейлер-анонс или тизер (видео, демонстрирующее геймплей/атмосферу).</label>
+                    </div>
+                    <div class="checklist-item">
+                        <input type="checkbox" id="announce-5" data-section="announce">
+                        <label for="announce-5">Оформить страницу игры в магазине (Steam «Coming Soon», App Store, и т.д.) с описанием, медиа и возможностью добавлять в желаемое.</label>
+                    </div>
+                    <div class="checklist-item">
+                        <input type="checkbox" id="announce-6" data-section="announce">
+                        <label for="announce-6">Запустить официальные соцсети проекта: Twitter/X, Facebook, Instagram, TikTok и др. – оформить профили и опубликовать первые посты.</label>
+                    </div>
+                    <div class="checklist-item">
+                        <input type="checkbox" id="announce-7" data-section="announce">
+                        <label for="announce-7">Создать веб-сайт или лендинг игры (или раздел на сайте студии) с базовой информацией и ссылками на соцсети и магазин.</label>
+                    </div>
+                    <div class="checklist-item">
+                        <input type="checkbox" id="announce-8" data-section="announce">
+                        <label for="announce-8">Анонсировать игру публично: выложить трейлер на YouTube, сделать посты в соцсетях с объявлением, разослать пресс-релиз по профильным СМИ.</label>
+                    </div>
+                    <div class="checklist-item">
+                        <input type="checkbox" id="announce-9" data-section="announce">
+                        <label for="announce-9">Разослать пресс-релиз журналистам и блогерам (с ссылкой на пресс-кит и демо, если готово) для первых новостей об игре.</label>
+                    </div>
+                    <div class="checklist-item">
+                        <input type="checkbox" id="announce-10" data-section="announce">
+                        <label for="announce-10">Создать канал коммуникации с сообществом: например, сервер Discord или группу в VK/Steam, чтобы собирать первых фанатов.</label>
+                    </div>
+                    <div class="checklist-item">
+                        <input type="checkbox" id="announce-11" data-section="announce">
+                        <label for="announce-11">Отслеживать реакцию: собирать первые отзывы, отвечать на комментарии, поощрять заинтересованных пользователей (например, призывать добавить игру в список желаемого).</label>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Tab content for Demo -->
+            <div id="demo" class="tab-content">
+                <h2 class="section-title">Этап демо-версии игры</h2>
+                <p class="mb-4">
+                    Демо-версия позволяет игрокам самостоятельно опробовать проект до релиза. Это важный этап для привлечения внимания прессы и стримеров, сбора фидбека и увеличения списков желаемого.
+                </p>
+                <div class="progress-container">
+                    <div class="progress-bar" id="demo-progress"></div>
+                </div>
+                <div class="mb-4 text-right text-sm text-gray-600">Выполнено: <span id="demo-completed">0</span> из <span id="demo-total">10</span></div>
+                
+                <div class="checklist-container" data-section="demo">
+                    <div class="checklist-item">
+                        <input type="checkbox" id="demo-1" data-section="demo">
+                        <label for="demo-1">Определить содержание демо: выбрать уровни/функции, демонстрирующие лучшие аспекты игры.</label>
+                    </div>
+                    <div class="checklist-item">
+                        <input type="checkbox" id="demo-2" data-section="demo">
+                        <label for="demo-2">Подготовить и протестировать демо: убедиться в стабильности, учесть UX для новых игроков, исправить критические баги.</label>
+                    </div>
+                    <div class="checklist-item">
+                        <input type="checkbox" id="demo-3" data-section="demo">
+                        <label for="demo-3">Организовать закрытое тестирование демо (фокус-группа или бета-тестеры) и собрать обратную связь для доработок.</label>
+                    </div>
+                    <div class="checklist-item">
+                        <input type="checkbox" id="demo-4" data-section="demo">
+                        <label for="demo-4">Выбрать стратегию выпуска демо: ограниченный по времени доступ, постоянно доступная демо-версия, либо участие в Steam Next Fest.</label>
+                    </div>
+                    <div class="checklist-item">
+                        <input type="checkbox" id="demo-5" data-section="demo">
+                        <label for="demo-5">Оформить демо-версию в магазине: загрузить билд демо на платформу (Steam, itch.io и др.), добавить описания «Playtest» или отметить как демо на Steam.</label>
+                    </div>
+                    <div class="checklist-item">
+                        <input type="checkbox" id="demo-6" data-section="demo">
+                        <label for="demo-6">Обновить пресс-кит: добавить новую информацию (например, «демо доступно»), свежие скриншоты, упоминание наград/внимания, если появились.</label>
+                    </div>
+                    <div class="checklist-item">
+                        <input type="checkbox" id="demo-7" data-section="demo">
+                        <label for="demo-7">Анонсировать релиз демо: опубликовать в соцсетях новость о доступности демо, разослать пресс-релиз/письма СМИ с предложением опробовать игру.</label>
+                    </div>
+                    <div class="checklist-item">
+                        <input type="checkbox" id="demo-8" data-section="demo">
+                        <label for="demo-8">Стимулировать игроков поделиться впечатлениями: запросить отзывы в Discord/соцсетях, предложить оставить пожелания или баг-репорты.</label>
+                    </div>
+                    <div class="checklist-item">
+                        <input type="checkbox" id="demo-9" data-section="demo">
+                        <label for="demo-9">Мониторить метрики демо: количество загрузок, прохождений, добавлений в желаемое на Steam, отклики пользователей.</label>
+                    </div>
+                    <div class="checklist-item">
+                        <input type="checkbox" id="demo-10" data-section="demo">
+                        <label for="demo-10">Запланировать обновления демо (при необходимости): исправить найденные баги, возможно, выпустить патч или расширенную версию демо по итогам обратной связи.</label>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Tab content for Steam Next Fest -->
+            <div id="nextfest" class="tab-content">
+                <h2 class="section-title">Участие в Steam Next Fest (фестиваль демо-версий)</h2>
+                <p class="mb-4">
+                    Steam Next Fest – это регулярный онлайн-фестиваль Steam, где сотни игр предоставляют бесплатные демо и проводят трансляции. Участие в Next Fest способно значительно повысить видимость проекта и увеличить число желающих купить игру.
+                </p>
+                <div class="progress-container">
+                    <div class="progress-bar" id="nextfest-progress"></div>
+                </div>
+                <div class="mb-4 text-right text-sm text-gray-600">Выполнено: <span id="nextfest-completed">0</span> из <span id="nextfest-total">11</span></div>
+                
+                <div class="checklist-container" data-section="nextfest">
+                    <div class="checklist-item">
+                        <input type="checkbox" id="nextfest-1" data-section="nextfest">
+                        <label for="nextfest-1">Выбрать оптимальный Steam Next Fest для участия (учесть дедлайны подачи заявки и готовность демо; фестивали проходят ~3 раза в год).</label>
+                    </div>
+                    <div class="checklist-item">
+                        <input type="checkbox" id="nextfest-2" data-section="nextfest">
+                        <label for="nextfest-2">Подать заявку и зарегистрироваться на участие в Next Fest через Steamworks (учесть требования: наличие страницы «Coming Soon» и рабочей демо-версии к определенному сроку).</label>
+                    </div>
+                    <div class="checklist-item">
+                        <input type="checkbox" id="nextfest-3" data-section="nextfest">
+                        <label for="nextfest-3">Проинформировать сообщество о планируемом участии: анонсировать в соцсетях и Discord, что демо будет доступно на Next Fest в определенные даты.</label>
+                    </div>
+                    <div class="checklist-item">
+                        <input type="checkbox" id="nextfest-4" data-section="nextfest">
+                        <label for="nextfest-4">Подготовить материалы специально к Next Fest: обновленный трейлер или геймплейный ролик, который будет показан посетителям (Steam может демонстрировать трейлеры участников фестиваля).</label>
+                    </div>
+                    <div class="checklist-item">
+                        <input type="checkbox" id="nextfest-5" data-section="nextfest">
+                        <label for="nextfest-5">Запланировать трансляции во время Next Fest: настроить Steam Broadcast на странице игры, расписать несколько стримов с разработчиками в дни фестиваля.</label>
+                    </div>
+                    <div class="checklist-item">
+                        <input type="checkbox" id="nextfest-6" data-section="nextfest">
+                        <label for="nextfest-6">Составить график постов на время фестиваля: ежедневно публиковать в соцсетях напоминания о демо, факты о игре, достижения игроков, чтобы поддерживать интерес.</label>
+                    </div>
+                    <div class="checklist-item">
+                        <input type="checkbox" id="nextfest-7" data-section="nextfest">
+                        <label for="nextfest-7">Провести дополнительный пресс-рассылку перед началом Next Fest: уведомить прессу и блогеров, что игра будет на фестивале (дать ссылки на демо и расписание стримов).</label>
+                    </div>
+                    <div class="checklist-item">
+                        <input type="checkbox" id="nextfest-8" data-section="nextfest">
+                        <label for="nextfest-8">Во время фестиваля – активно взаимодействовать с аудиторией: отвечать на вопросы в чате Steam, комментарии в соцсетях, собирать отзывы игроков о демо.</label>
+                    </div>
+                    <div class="checklist-item">
+                        <input type="checkbox" id="nextfest-9" data-section="nextfest">
+                        <label for="nextfest-9">Следить за метриками Next Fest: ежедневный прирост списков желаемого, активность на странице, отзывы о демо; фиксировать скачки интереса для анализа.</label>
+                    </div>
+                    <div class="checklist-item">
+                        <input type="checkbox" id="nextfest-10" data-section="nextfest">
+                        <label for="nextfest-10">По окончании – поблагодарить участников: сделать пост с благодарностью всем, кто играл в демо, поделиться ключевыми достижениями (например, числом загрузок или добавлений в желаемое).</label>
+                    </div>
+                    <div class="checklist-item">
+                        <input type="checkbox" id="nextfest-11" data-section="nextfest">
+                        <label for="nextfest-11">Проанализировать результаты: какие каналы привлекли больше игроков, какой фидбек получен, что можно улучшить к релизу (как в игре, так и в маркетинговых материалах).</label>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Tab content for Release -->
+            <div id="release" class="tab-content">
+                <h2 class="section-title">Этап релиза (запуск игры)</h2>
+                <p class="mb-4">
+                    Этап релиза – кульминационный момент кампании. К этому времени у вас уже должна быть солидная база желающих и подписчиков, и задача маркетинга – конвертировать этот интерес в покупки, а также привлечь новую аудиторию за счет шумихи вокруг запуска.
+                </p>
+                <div class="progress-container">
+                    <div class="progress-bar" id="release-progress"></div>
+                </div>
+                <div class="mb-4 text-right text-sm text-gray-600">Выполнено: <span id="release-completed">0</span> из <span id="release-total">15</span></div>
+                
+                <div class="checklist-container" data-section="release">
+                    <div class="checklist-item">
+                        <input type="checkbox" id="release-1" data-section="release">
+                        <label for="release-1">Уточнить дату релиза и сообщить её аудитории (если ранее был только месяц/квартал) – желательно объявить дату за 4-8 недель до выхода, если не делали этого раньше.</label>
+                    </div>
+                    <div class="checklist-item">
+                        <input type="checkbox" id="release-2" data-section="release">
+                        <label for="release-2">Установить финальную цену игры и настроить региональные цены на платформах (Steam, консоли и др.). Решить вопрос скидки на стартовый период (часто 10% на неделю).</label>
+                    </div>
+                    <div class="checklist-item">
+                        <input type="checkbox" id="release-3" data-section="release">
+                        <label for="release-3">Подготовить релизный трейлер (Launch Trailer), демонстрирующий готовый продукт, отзывы (если есть) и призыв купить.</label>
+                    </div>
+                    <div class="checklist-item">
+                        <input type="checkbox" id="release-4" data-section="release">
+                        <label for="release-4">Обновить страницу игры в магазине перед запуском: добавить релизный трейлер, финальные скриншоты, убрать лишние отметки «Coming Soon», установить точное время выхода.</label>
+                    </div>
+                    <div class="checklist-item">
+                        <input type="checkbox" id="release-5" data-section="release">
+                        <label for="release-5">Сгенерировать ключи (ключи активации) заранее на всех платформах для пресс-версий (процесс может занять время – позаботьтесь об этом заблаговременно).</label>
+                    </div>
+                    <div class="checklist-item">
+                        <input type="checkbox" id="release-6" data-section="release">
+                        <label for="release-6">Отправить обзорные копии (ключи) игры прессе, стримерам и блогерам ~за 1-2 недели до релиза. Приложить пресс-релиз с описанием, особенностями и датой эмбарго обзоров (если вы хотите синхронные публикации).</label>
+                    </div>
+                    <div class="checklist-item">
+                        <input type="checkbox" id="release-7" data-section="release">
+                        <label for="release-7">Провести финальную PR-кампанию: разослать пресс-релиз о предстоящем релизе с напоминанием ключевых фишек игры и датой выхода. Индивидуально связаться с журналистами, проявлявшими интерес ранее.</label>
+                    </div>
+                    <div class="checklist-item">
+                        <input type="checkbox" id="release-8" data-section="release">
+                        <label for="release-8">Запланировать маркетинг в соцсетях на последние дни перед запуском: обратный отсчет (countdown) за несколько дней, показ новых артов или фактов, создание хайпа.</label>
+                    </div>
+                    <div class="checklist-item">
+                        <input type="checkbox" id="release-9" data-section="release">
+                        <label for="release-9">Организовать сообщество на релиз: например, провести AMA-сессию (на Reddit или в Discord) в день релиза, или организовать запускной стрим с командой разработки.</label>
+                    </div>
+                    <div class="checklist-item">
+                        <input type="checkbox" id="release-10" data-section="release">
+                        <label for="release-10">Проверить готовность техподдержки и каналов связи: убедиться, что есть план на случай технических проблем в день выхода (быстрый патч, ответы на вопросы игроков).</label>
+                    </div>
+                    <div class="checklist-item">
+                        <input type="checkbox" id="release-11" data-section="release">
+                        <label for="release-11">Релиз-день: Опубликовать игру в оговоренное время на всех платформах. Одновременно выпустить посты во всех соцсетях с объявлением «Игра вышла!» и трейлером + ссылками на магазин.</label>
+                    </div>
+                    <div class="checklist-item">
+                        <input type="checkbox" id="release-12" data-section="release">
+                        <label for="release-12">В день релиза мониторить упоминания: отслеживать обзоры, стримы, соцсети. Репостить положительные отзывы, благодарить создателей контента, реагировать на вопросы или проблемы.</label>
+                    </div>
+                    <div class="checklist-item">
+                        <input type="checkbox" id="release-13" data-section="release">
+                        <label for="release-13">Организовать работу с сообществом сразу после выхода: приветствовать новых игроков, открыть темы для отзывов и багрепортов на форумах/Discord.</label>
+                    </div>
+                    <div class="checklist-item">
+                        <input type="checkbox" id="release-14" data-section="release">
+                        <label for="release-14">Побудить довольных игроков оставить отзывы (review) в магазине спустя пару дней после релиза (например, через объявление в сообществе Steam или пост в соцсетях).</label>
+                    </div>
+                    <div class="checklist-item">
+                        <input type="checkbox" id="release-15" data-section="release">
+                        <label for="release-15">Зафиксировать итоги запуска через 1-2 недели: первоначальные продажи, размер аудитории, отзывы прессы – это поможет скорректировать дальнейший маркетинг.</label>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Tab content for Post-Release -->
+            <div id="postrelease" class="tab-content">
+                <h2 class="section-title">Пост-релизный этап (поддержка и дальнейший маркетинг)</h2>
+                <p class="mb-4">
+                    После релиза важно не прекращать маркетинговую активность. Пост-релизный этап направлен на удержание интереса игроков, привлечение отстающей аудитории и поддержание продаж на длинном хвосте.
+                </p>
+                <div class="progress-container">
+                    <div class="progress-bar" id="postrelease-progress"></div>
+                </div>
+                <div class="mb-4 text-right text-sm text-gray-600">Выполнено: <span id="postrelease-completed">0</span> из <span id="postrelease-total">10</span></div>
+                
+                <div class="checklist-container" data-section="postrelease">
+                    <div class="checklist-item">
+                        <input type="checkbox" id="postrelease-1" data-section="postrelease">
+                        <label for="postrelease-1">Поддерживать активность в соцсетях и сообществе: регулярно публиковать новости (арт, факты разработки, отзывы игроков), отвечать на вопросы и поддерживать интерес.</label>
+                    </div>
+                    <div class="checklist-item">
+                        <input type="checkbox" id="postrelease-2" data-section="postrelease">
+                        <label for="postrelease-2">Выпустить патчи/обновления с исправлениями ошибок, найденных после запуска, и сообщить об этом игрокам (постом в Steam, твитом и т.д.), демонстрируя, что проект поддерживается.</label>
+                    </div>
+                    <div class="checklist-item">
+                        <input type="checkbox" id="postrelease-3" data-section="postrelease">
+                        <label for="postrelease-3">Планировать контентные обновления или DLC (если предусмотрены): составить календарь дополнительных выпусков (бесплатных или платных) и маркетировать их анонсы и выходы.</label>
+                    </div>
+                    <div class="checklist-item">
+                        <input type="checkbox" id="postrelease-4" data-section="postrelease">
+                        <label for="postrelease-4">Устроить акции и участвовать в распродажах: применять скидки на игру во время крупных распродаж (Steam Sale, праздники) для привлечения новой аудитории, анонсируя скидки заранее.</label>
+                    </div>
+                    <div class="checklist-item">
+                        <input type="checkbox" id="postrelease-5" data-section="postrelease">
+                        <label for="postrelease-5">Продолжить работу с прессой: отправлять пресс-релизы о значимых событиях – крупных обновлениях, достижениях (например, 100k игроков), выходе на новых платформах.</label>
+                    </div>
+                    <div class="checklist-item">
+                        <input type="checkbox" id="postrelease-6" data-section="postrelease">
+                        <label for="postrelease-6">Расширять платформы (если актуально): портировать игру на консоли, мобильные устройства – и строить отдельные маркетинговые кампании под эти релизы (связываться с платформодержателями для фичеринга и т.д.).</label>
+                    </div>
+                    <div class="checklist-item">
+                        <input type="checkbox" id="postrelease-7" data-section="postrelease">
+                        <label for="postrelease-7">Анализировать данные и эффективность маркетинга: оценить, какие каналы принесли больше всего игроков (соцсети, пресса, желания в Steam и конверсия), и учесть выводы для будущих проектов.</label>
+                    </div>
+                    <div class="checklist-item">
+                        <input type="checkbox" id="postrelease-8" data-section="postrelease">
+                        <label for="postrelease-8">Поддерживать долгосрочное сообщество: проводить мероприятия (соревнования, стримы с разработчиками по случаю годовщины), поощрять создание пользовательского контента (моды, фан-арт) и отмечать это в официальных каналах.</label>
+                    </div>
+                    <div class="checklist-item">
+                        <input type="checkbox" id="postrelease-9" data-section="postrelease">
+                        <label for="postrelease-9">Следить за отзывами и рейтингами: реагировать на негатив конструктивно (исправляя проблемы), благодарить за положительные обзоры, возможно, предлагать небольшие внутри-игровые бонусы активным участникам сообщества.</label>
+                    </div>
+                    <div class="checklist-item">
+                        <input type="checkbox" id="postrelease-10" data-section="postrelease">
+                        <label for="postrelease-10">Начать подготовку к следующему проекту (если планируется): информировать существующую аудиторию о ранних наработках новой игры, чтобы перенаправить накопленное сообщество на будущие релизы.</label>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Tab content for Generator -->
+            <div id="generator" class="tab-content">
+                <h2 class="section-title">Генератор маркетингового плана</h2>
+                <p class="mb-4">
+                    Заполните параметры вашей игры, чтобы получить персонализированный маркетинговый план, адаптированный под особенности вашего проекта.
+                </p>
+                
+                <div class="generator-form">
+                    <div class="mb-4">
+                        <label for="game-name" class="block text-gray-700 font-medium mb-2">Название игры</label>
+                        <input type="text" id="game-name" placeholder="Введите название игры" class="w-full">
+                        <div class="error-message" id="game-name-error"></div>
+                    </div>
+                    
+                    <div class="mb-4">
+                        <label for="game-genre" class="block text-gray-700 font-medium mb-2">Жанр</label>
+                        <select id="game-genre" class="w-full">
+                            <option value="">Выберите жанр</option>
+                            <option value="rpg">RPG</option>
+                            <option value="strategy">Стратегия</option>
+                            <option value="action">Экшн</option>
+                            <option value="adventure">Приключение</option>
+                            <option value="puzzle">Головоломка</option>
+                            <option value="platformer">Платформер</option>
+                            <option value="simulator">Симулятор</option>
+                            <option value="horror">Хоррор</option>
+                            <option value="shooter">Шутер</option>
+                            <option value="racing">Гонки</option>
+                            <option value="fighting">Файтинг</option>
+                            <option value="casual">Казуальная</option>
+                            <option value="sandbox">Песочница</option>
+                            <option value="sports">Спортивная</option>
+                            <option value="mmo">MMO</option>
+                            <option value="visual-novel">Визуальная новелла</option>
+                            <option value="other">Другое</option>
+                        </select>
+                        <div class="error-message" id="game-genre-error"></div>
+                    </div>
+                    
+                    <div class="mb-4">
+                        <label class="block text-gray-700 font-medium mb-2">Платформы</label>
+                        <div class="flex flex-wrap gap-3">
+                            <label class="inline-flex items-center">
+                                <input type="checkbox" name="platform" value="pc" class="form-checkbox h-5 w-5 text-blue-600">
+                                <span class="ml-2">PC</span>
+                            </label>
+                            <label class="inline-flex items-center">
+                                <input type="checkbox" name="platform" value="steam" class="form-checkbox h-5 w-5 text-blue-600">
+                                <span class="ml-2">Steam</span>
+                            </label>
+                            <label class="inline-flex items-center">
+                                <input type="checkbox" name="platform" value="epic" class="form-checkbox h-5 w-5 text-blue-600">
+                                <span class="ml-2">Epic Store</span>
+                            </label>
+                            <label class="inline-flex items-center">
+                                <input type="checkbox" name="platform" value="xbox" class="form-checkbox h-5 w-5 text-blue-600">
+                                <span class="ml-2">Xbox</span>
+                            </label>
+                            <label class="inline-flex items-center">
+                                <input type="checkbox" name="platform" value="playstation" class="form-checkbox h-5 w-5 text-blue-600">
+                                <span class="ml-2">PlayStation</span>
+                            </label>
+                            <label class="inline-flex items-center">
+                                <input type="checkbox" name="platform" value="nintendo" class="form-checkbox h-5 w-5 text-blue-600">
+                                <span class="ml-2">Nintendo Switch</span>
+                            </label>
+                            <label class="inline-flex items-center">
+                                <input type="checkbox" name="platform" value="mobile-ios" class="form-checkbox h-5 w-5 text-blue-600">
+                                <span class="ml-2">iOS</span>
+                            </label>
+                            <label class="inline-flex items-center">
+                                <input type="checkbox" name="platform" value="mobile-android" class="form-checkbox h-5 w-5 text-blue-600">
+                                <span class="ml-2">Android</span>
+                            </label>
+                        </div>
+                        <div class="error-message" id="platform-error"></div>
+                    </div>
+                    
+                    <div class="mb-4">
+                        <label for="target-audience" class="block text-gray-700 font-medium mb-2">Целевая аудитория</label>
+                        <textarea id="target-audience" placeholder="Опишите вашу целевую аудиторию (возраст, интересы, игровые предпочтения)" class="w-full h-24"></textarea>
+                        <div class="error-message" id="target-audience-error"></div>
+                    </div>
+                    
+                    <div class="mb-4">
+                        <label for="game-features" class="block text-gray-700 font-medium mb-2">Особенности игры</label>
+                        <textarea id="game-features" placeholder="Опишите ключевые особенности или 'фишки' вашей игры" class="w-full h-24"></textarea>
+                        <div class="error-message" id="game-features-error"></div>
+                    </div>
+                    
+                    <div class="mb-4">
+                        <label for="release-timeline" class="block text-gray-700 font-medium mb-2">Сроки разработки</label>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                            <div>
+                                <label for="planned-announce" class="block text-gray-600 text-sm mb-1">Планируемая дата анонса</label>
+                                <input type="date" id="planned-announce" class="w-full">
+                            </div>
+                            <div>
+                                <label for="planned-release" class="block text-gray-600 text-sm mb-1">Планируемая дата релиза</label>
+                                <input type="date" id="planned-release" class="w-full">
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="mb-4">
+                        <label for="budget" class="block text-gray-700 font-medium mb-2">Бюджет на маркетинг (опционально)</label>
+                        <input type="text" id="budget" placeholder="Укажите примерный бюджет на маркетинг" class="w-full">
+                    </div>
+                    
+                    <div class="mt-6">
+                        <button id="generate-plan-btn" class="btn btn-primary w-full flex items-center justify-center">
+                            <i class="fas fa-magic mr-2"></i> Сгенерировать план
+                        </button>
+                    </div>
+                </div>
+                
+                <div id="generated-plan-result" class="mt-8 hidden">
+                    <div class="bg-blue-50 rounded-lg p-6 border border-blue-200">
+                        <h3 class="text-lg font-bold text-blue-800 mb-3">Персонализированный план для: <span id="result-game-name"></span></h3>
+                        <p class="text-gray-600 mb-4">Ниже представлен индивидуальный маркетинговый план, адаптированный под ваш проект. Вы можете экспортировать его в PDF или добавить задачи к основному плану.</p>
+                         <p class="text-sm text-gray-500 mb-4 italic">Задачи, добавленные из этого плана, будут слегка выделены в общем списке.</p>
+                        
+                        <div class="bg-white rounded p-4 mb-4 shadow-sm">
+                            <h4 class="font-medium text-gray-800 mb-2">Рекомендуемый фокус для маркетинга:</h4>
+                            <ul id="marketing-focus" class="list-disc pl-5 text-gray-700"></ul>
+                        </div>
+                        
+                        <div class="bg-white rounded p-4 mb-4 shadow-sm">
+                            <h4 class="font-medium text-gray-800 mb-2">Рекомендуемые каналы продвижения:</h4>
+                            <ul id="marketing-channels" class="list-disc pl-5 text-gray-700"></ul>
+                        </div>
+                        
+                        <div class="bg-white rounded p-4 mb-4 shadow-sm">
+                            <h4 class="font-medium text-gray-800 mb-2">Дополнительные задачи для вашего жанра:</h4>
+                            <ul id="genre-tasks" class="list-disc pl-5 text-gray-700"></ul>
+                        </div>
+                        
+                        <div class="bg-white rounded p-4 mb-4 shadow-sm">
+                            <h4 class="font-medium text-gray-800 mb-2">Дополнительные задачи для вашей платформы:</h4>
+                            <ul id="platform-tasks" class="list-disc pl-5 text-gray-700"></ul>
+                        </div>
+                        
+                        <div class="flex space-x-2 mt-4">
+                            <button id="export-pdf-btn" class="btn btn-outline flex items-center">
+                                <i class="fas fa-file-pdf mr-2"></i> Экспорт в PDF
+                            </button>
+                            <button id="add-to-plan-btn" class="btn btn-primary flex items-center">
+                                <i class="fas fa-plus mr-2"></i> Добавить к плану
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container mx-auto px-6">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <div class="mb-6 md:mb-0">
+                    <div class="flex items-center mb-4">
+                        <div class="flex items-center justify-center w-10 h-10 bg-primary bg-opacity-20 rounded-full mr-3">
+                            <i class="fas fa-gamepad text-lg text-primary"></i>
+                        </div>
+                        <h2 class="text-xl font-bold text-gray-800 dark:text-gray-200">Маркетинговый план продвижения игры</h2>
+                    </div>
+                    <p class="text-gray-600 dark:text-gray-400">Интерактивный чеклист и генератор</p>
+                </div>
+                <div class="flex space-x-6">
+                    <a href="#" class="text-gray-400 hover:text-primary transition-colors">
+                        <i class="fab fa-github text-2xl"></i>
+                    </a>
+                    <a href="#" class="text-gray-400 hover:text-primary transition-colors">
+                        <i class="fab fa-twitter text-2xl"></i>
+                    </a>
+                    <a href="#" class="text-gray-400 hover:text-primary transition-colors">
+                        <i class="fab fa-discord text-2xl"></i>
+                    </a>
+                </div>
+            </div>
+            <div class="mt-8 pt-6 border-t border-gray-200 dark:border-gray-700 text-center text-gray-500 dark:text-gray-400 text-sm">
+                <p>© 2025 Маркетинговый план продвижения игры. Использование материалов приветствуется при указании источника.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Separate script for tab functionality -->
+    <script>
+        // Simple tab functionality - completely isolated from other scripts
+        document.addEventListener('DOMContentLoaded', function() {
+            // Get all tab buttons and content elements
+            const tabLinks = document.querySelectorAll('.tab-buttons .nav-tab');
+            const tabContents = document.querySelectorAll('.tab-content');
+            
+            // Add click event to each tab button
+            tabLinks.forEach(function(tabLink) {
+                tabLink.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    
+                    // Get target content ID
+                    const targetId = this.getAttribute('data-target');
+                    
+                    // Remove active class from all tabs and contents
+                    tabLinks.forEach(function(link) {
+                        link.classList.remove('active');
+                    });
+                    
+                    tabContents.forEach(function(content) {
+                        content.classList.remove('active');
+                    });
+                    
+                    // Add active class to selected tab and content
+                    this.classList.add('active');
+                    document.getElementById(targetId).classList.add('active');
+                });
+            });
+        });
+    </script>
+
+    <!-- Main application script -->
+    <script>
+        // Tab switching functionality - REMOVED (now handled by separate script)
+
+        // Checkbox functionality and progress tracking
+        const sections = ['announce', 'demo', 'nextfest', 'release', 'postrelease'];
+        
+        function updateProgress(section) {
+            const checkboxes = document.querySelectorAll(`input[type="checkbox"][data-section="${section}"]`);
+            const checkedBoxes = document.querySelectorAll(`input[type="checkbox"][data-section="${section}"]:checked`);
+            
+            const total = checkboxes.length;
+            const completed = checkedBoxes.length;
+            const percentage = total > 0 ? Math.round((completed / total) * 100) : 0;
+            
+            // Update progress bar
+            document.getElementById(`${section}-progress`).style.width = `${percentage}%`;
+            
+            // Update text counters
+            document.getElementById(`${section}-completed`).textContent = completed;
+            document.getElementById(`${section}-total`).textContent = total;
+            
+            // Update circular progress 
+            const progressCircle = document.querySelector(`.progress-${section}`);
+            const progressPercent = document.querySelector(`.progress-percent-${section}`);
+            
+            if (progressCircle && progressPercent) {
+                const circumference = 2 * Math.PI * 30; // r = 30
+                const offset = circumference - (percentage / 100) * circumference;
+                progressCircle.style.strokeDasharray = `${circumference} ${circumference}`;
+                progressCircle.style.strokeDashoffset = offset;
+                progressPercent.textContent = `${percentage}%`;
+            }
+            
+            // Save progress to localStorage
+            saveProgress();
+        }
+        
+        // Add event listeners to all checkboxes
+        document.querySelectorAll('input[type="checkbox"][data-section]').forEach(checkbox => {
+            checkbox.addEventListener('change', () => {
+                const section = checkbox.getAttribute('data-section');
+                updateProgress(section);
+            });
+        });
+        
+        // Initialize progress for all sections
+        sections.forEach(section => {
+            updateProgress(section);
+        });
+        
+        // Save and load progress functionality
+        function saveProgress() {
+            const checkboxStates = {};
+            
+            document.querySelectorAll('input[type="checkbox"][data-section]').forEach(checkbox => {
+                // Сохраняем больше информации о задаче
+                const label = checkbox.nextElementSibling;
+                const labelText = label ? label.textContent.replace(/\(\d{1,2}\.\d{1,2}\.\d{4}\)/, '').trim() : '';
+                
+                checkboxStates[checkbox.id] = {
+                    checked: checkbox.checked,
+                    completedDate: checkbox.getAttribute('data-completed-date') || null,
+                    priority: checkbox.closest('.checklist-item').classList.contains('task-high-priority') ? 'high' : 
+                               checkbox.closest('.checklist-item').classList.contains('task-optional') ? 'optional' : 'normal',
+                    text: labelText // Для восстановления пользовательских задач
+                };
+            });
+            
+            localStorage.setItem('gameMarketingPlanProgress', JSON.stringify(checkboxStates));
+            
+            // Показываем индикатор автосохранения
+            showAutoSaveIndicator();
+        }
+        
+        // Показать индикатор автосохранения
+        function showAutoSaveIndicator() {
+            // Проверяем, существует ли уже индикатор
+            let saveIndicator = document.getElementById('auto-save-indicator');
+            
+            if (!saveIndicator) {
+                saveIndicator = document.createElement('div');
+                saveIndicator.id = 'auto-save-indicator';
+                saveIndicator.className = 'fixed bottom-4 right-4 bg-green-500 text-white px-3 py-1 rounded-lg shadow-md text-sm z-50 opacity-0 transition-opacity duration-300';
+                saveIndicator.innerHTML = '<i class="fas fa-save mr-2"></i> Автосохранение...';
+                document.body.appendChild(saveIndicator);
+            }
+            
+            // Показываем индикатор
+            saveIndicator.style.opacity = '1';
+            
+            // Скрываем через 1.5 секунды
+            setTimeout(() => {
+                saveIndicator.style.opacity = '0';
+            }, 1500);
+        }
+
+        function loadProgress() {
+            const savedProgress = localStorage.getItem('gameMarketingPlanProgress');
+            
+            if (savedProgress) {
+                try {
+                    const checkboxStates = JSON.parse(savedProgress);
+                    
+                    // Очистить существующие пользовательские задачи
+                    document.querySelectorAll('.checklist-item[data-custom="true"]').forEach(item => {
+                        item.remove();
+                    });
+                    
+                    // Восстановить состояния существующих чекбоксов
+                    for (const [id, state] of Object.entries(checkboxStates)) {
+                        const checkbox = document.getElementById(id);
+                        
+                        // Для существующих стандартных элементов
+                        if (checkbox) {
+                            checkbox.checked = state.checked;
+                            
+                            if (state.checked && state.completedDate) {
+                                checkbox.setAttribute('data-completed-date', state.completedDate);
+                                updateDateDisplay(checkbox, new Date(state.completedDate));
+                            } else {
+                                checkbox.removeAttribute('data-completed-date');
+                                removeDateDisplay(checkbox);
+                            }
+                            
+                            // Применяем состояние приоритета
+                            const item = checkbox.closest('.checklist-item');
+                            if (item) {
+                                item.classList.remove('task-high-priority', 'task-optional');
+                                const priorityBadge = item.querySelector('.priority-badge');
+                                if (priorityBadge) priorityBadge.remove();
+                                
+                                if (state.priority === 'high') {
+                                    item.classList.add('task-high-priority');
+                                    addPriorityBadge(item, 'high');
+                                } else if (state.priority === 'optional') {
+                                    item.classList.add('task-optional');
+                                    addPriorityBadge(item, 'optional');
+                                }
+                            }
+                        }
+                        // Восстановление пользовательских задач
+                        else if (id.includes('custom') && state.text) {
+                            const sectionId = id.split('-')[0];
+                            const container = document.querySelector(`[data-section="${sectionId}"]`);
+                            
+                            if (container) {
+                                addCustomTask(container, sectionId, id, state.text, state.checked, state.completedDate, state.priority);
+                            }
+                        }
+                    }
+                    
+                    // Обновить прогресс для всех секций
+                    sections.forEach(section => {
+                        updateProgress(section);
+                    });
+                } catch (error) {
+                    console.error('Ошибка при загрузке прогресса:', error);
+                }
+            }
+        }
+        
+        // Добавить пользовательскую задачу
+        function addCustomTask(container, sectionId, id, text, checked = false, completedDate = null, priority = 'normal') {
+            const newItem = document.createElement('div');
+            newItem.className = 'checklist-item';
+            newItem.setAttribute('data-custom', 'true'); // Помечаем как пользовательскую
+            
+            if (priority === 'high') {
+                newItem.classList.add('task-high-priority');
+            } else if (priority === 'optional') {
+                newItem.classList.add('task-optional');
+            }
+            
+            newItem.innerHTML = `
+                <div class="drag-handle flex-shrink-0 mr-2 cursor-grab opacity-60 hover:opacity-100">
+                    <i class="fas fa-grip-vertical text-gray-400"></i>
+                </div>
+                <input type="checkbox" id="${id}" data-section="${sectionId}">
+                <label for="${id}">${text}</label>
+            `;
+            
+            // Добавляем бейдж приоритета
+            if (priority === 'high' || priority === 'optional') {
+                addPriorityBadge(newItem, priority);
+            }
+            
+            // Добавляем контекстное меню и кнопки
+            addTaskContextMenu(newItem);
+            
+            container.appendChild(newItem);
+            
+            // Настройка чекбокса
+            const checkbox = newItem.querySelector('input[type="checkbox"]');
+            checkbox.checked = checked;
+            
+            if (checked && completedDate) {
+                checkbox.setAttribute('data-completed-date', completedDate);
+                updateDateDisplay(checkbox, new Date(completedDate));
+            }
+            
+            // Добавляем обработчики событий
+            checkbox.addEventListener('change', () => {
+                handleCheckboxChange(checkbox);
+                saveProgress(); // Автосохранение при изменении
+            });
+            
+            // Активируем перетаскивание
+            makeItemDraggable(newItem);
+            
+            return newItem;
+        }
+        
+        // Добавить бейдж приоритета
+        function addPriorityBadge(item, priority) {
+            // Удаляем существующий бейдж, если есть
+            const existingBadge = item.querySelector('.priority-badge');
+            if (existingBadge) existingBadge.remove();
+            
+            const label = item.querySelector('label');
+            
+            if (!label) return;
+            
+            const badge = document.createElement('span');
+            badge.className = `priority-badge ${priority}`;
+            badge.textContent = priority === 'high' ? 'важно' : 'опционально';
+            
+            label.appendChild(badge);
+        }
+        
+        // Показать кастомное модальное окно вместо confirm
+        function showConfirmModal(title, message, onConfirm, onCancel = null) {
+            const backdrop = document.createElement('div');
+            backdrop.className = 'custom-modal-backdrop';
+            
+            const modalHtml = `
+                <div class="custom-modal">
+                    <div class="custom-modal-header">
+                        <i class="fas fa-exclamation-triangle text-yellow-500"></i>
+                        <h3 class="custom-modal-title">${title}</h3>
+                    </div>
+                    <div class="custom-modal-body">
+                        <p>${message}</p>
+                    </div>
+                    <div class="custom-modal-footer">
+                        <button class="btn btn-outline cancel-btn">Отмена</button>
+                        <button class="btn btn-primary confirm-btn">Подтвердить</button>
+                    </div>
+                </div>
+            `;
+            
+            backdrop.innerHTML = modalHtml;
+            document.body.appendChild(backdrop);
+            
+            // Анимация появления
+            setTimeout(() => {
+                backdrop.classList.add('show');
+                backdrop.querySelector('.custom-modal').classList.add('show');
+            }, 10);
+            
+            // Обработчики кнопок
+            backdrop.querySelector('.cancel-btn').addEventListener('click', () => {
+                closeModal(backdrop);
+                if (onCancel) onCancel();
+            });
+            
+            backdrop.querySelector('.confirm-btn').addEventListener('click', () => {
+                closeModal(backdrop);
+                onConfirm();
+            });
+            
+            // Закрытие по клику на фон
+            backdrop.addEventListener('click', (e) => {
+                if (e.target === backdrop) {
+                    closeModal(backdrop);
+                    if (onCancel) onCancel();
+                }
+            });
+            
+            // Закрытие по клавише Esc
+            const escHandler = (e) => {
+                if (e.key === 'Escape') {
+                    closeModal(backdrop);
+                    if (onCancel) onCancel();
+                    document.removeEventListener('keydown', escHandler);
+                }
+            };
+            document.addEventListener('keydown', escHandler);
+        }
+        
+        // Закрыть модальное окно
+        function closeModal(modalBackdrop) {
+            modalBackdrop.querySelector('.custom-modal').classList.remove('show');
+            modalBackdrop.classList.remove('show');
+            
+            // Удаляем после анимации
+            setTimeout(() => {
+                if (document.body.contains(modalBackdrop)) {
+                    document.body.removeChild(modalBackdrop);
+                }
+            }, 300);
+        }
+        
+        // Показать уведомление о завершении секции
+        function showCompletionNotification(section) {
+            const sectionNames = {
+                'announce': 'Анонс',
+                'demo': 'Демо',
+                'nextfest': 'Steam Next Fest',
+                'release': 'Релиз',
+                'postrelease': 'Пост-релиз'
+            };
+            
+            const backdrop = document.createElement('div');
+            backdrop.className = 'custom-modal-backdrop';
+            
+            const modalHtml = `
+                <div class="custom-modal celebration-modal">
+                    <i class="fas fa-trophy celebration-icon"></i>
+                    <h3 class="text-xl font-bold text-center mb-4">Поздравляем!</h3>
+                    <p class="text-center mb-6">Вы завершили все задачи этапа "${sectionNames[section]}"!</p>
+                    <div class="flex justify-center">
+                        <button class="btn btn-primary close-celebration-btn">Отлично!</button>
+                    </div>
+                </div>
+            `;
+            
+            backdrop.innerHTML = modalHtml;
+            document.body.appendChild(backdrop);
+            
+            // Анимация появления
+            setTimeout(() => {
+                backdrop.classList.add('show');
+                backdrop.querySelector('.custom-modal').classList.add('show');
+            }, 10);
+            
+            // Обработчик кнопки
+            backdrop.querySelector('.close-celebration-btn').addEventListener('click', () => {
+                closeModal(backdrop);
+            });
+            
+            // Закрытие по клику на фон
+            backdrop.addEventListener('click', (e) => {
+                if (e.target === backdrop) {
+                    closeModal(backdrop);
+                }
+            });
+        }
+        
+        function handleCheckboxChange(checkbox) {
+            const section = checkbox.getAttribute('data-section');
+            
+            if (checkbox.checked) {
+                const now = new Date();
+                checkbox.setAttribute('data-completed-date', now.toISOString());
+                updateDateDisplay(checkbox, now);
+            } else {
+                checkbox.removeAttribute('data-completed-date');
+                removeDateDisplay(checkbox);
+            }
+            
+            updateProgress(section);
+            
+            // Автосохранение при каждом изменении
+            saveProgress();
+            
+            // Проверка на завершение всех задач в секции
+            const allCheckboxes = document.querySelectorAll(`input[type="checkbox"][data-section="${section}"]`);
+            const allChecked = Array.from(allCheckboxes).every(cb => cb.checked);
+            
+            if (allChecked && allCheckboxes.length > 0) {
+                showCompletionNotification(section);
+            }
+        }
+        
+        // Save button
+        document.getElementById('save-btn').addEventListener('click', () => {
+            saveProgress();
+            
+            // Show feedback
+            const savedButton = document.getElementById('save-btn');
+            const originalText = savedButton.innerHTML;
+            savedButton.innerHTML = '<i class="fas fa-check mr-2"></i> Сохранено!';
+            savedButton.classList.add('bg-green-500', 'text-white', 'border-green-500');
+            savedButton.classList.remove('btn-outline');
+            
+            setTimeout(() => {
+                savedButton.innerHTML = originalText;
+                savedButton.classList.remove('bg-green-500', 'text-white', 'border-green-500');
+                savedButton.classList.add('btn-outline');
+            }, 2000);
+        });
+        
+        // Reset button
+        document.getElementById('reset-btn').addEventListener('click', () => {
+            if (confirm('Вы уверены, что хотите сбросить весь прогресс? Это действие нельзя отменить.')) {
+                document.querySelectorAll('input[type="checkbox"][data-section]').forEach(checkbox => {
+                    checkbox.checked = false;
+                });
+                
+                sections.forEach(section => {
+                    updateProgress(section);
+                });
+            }
+        });
+
+        // Generator functionality
+        document.getElementById('generate-plan-btn').addEventListener('click', () => {
+            const gameName = document.getElementById('game-name').value;
+            const gameGenre = document.getElementById('game-genre').value;
+            const platforms = Array.from(document.querySelectorAll('input[name="platform"]:checked')).map(el => el.value);
+            const targetAudience = document.getElementById('target-audience').value;
+            const gameFeatures = document.getElementById('game-features').value;
+            
+            if (!gameName || !gameGenre || platforms.length === 0 || !targetAudience || !gameFeatures) {
+                alert('Пожалуйста, заполните все обязательные поля (название, жанр, платформы, целевая аудитория и особенности игры).');
+                return;
+            }
+            
+            // Generate plan based on inputs
+            generatePlan(gameName, gameGenre, platforms, targetAudience, gameFeatures);
+            
+            // Show results
+            document.getElementById('generated-plan-result').classList.remove('hidden');
+            document.getElementById('result-game-name').textContent = gameName;
+            
+            // Scroll to results
+            document.getElementById('generated-plan-result').scrollIntoView({ behavior: 'smooth' });
+        });
+        
+        // Mock data for the generator
+        function generatePlan(gameName, gameGenre, platforms, targetAudience, gameFeatures) {
+            // Clear previous results
+            document.getElementById('marketing-focus').innerHTML = '';
+            document.getElementById('marketing-channels').innerHTML = '';
+            document.getElementById('genre-tasks').innerHTML = '';
+            document.getElementById('platform-tasks').innerHTML = '';
+            
+            // Generate marketing focus based on genre and features
+            const marketingFocus = [];
+            
+            switch(gameGenre) {
+                case 'rpg':
+                    marketingFocus.push('Акцент на глубину сюжета и развитие персонажей');
+                    marketingFocus.push('Подчеркивание системы прогрессии и кастомизации');
+                    marketingFocus.push('Демонстрация уникального мира и лора');
+                    break;
+                case 'strategy':
+                    marketingFocus.push('Акцент на стратегическую глубину и разнообразие тактик');
+                    marketingFocus.push('Подчеркивание баланса и возможностей для соревнования');
+                    marketingFocus.push('Демонстрация уникальных механик и инноваций в жанре');
+                    break;
+                case 'action':
+                    marketingFocus.push('Акцент на динамичность и зрелищность геймплея');
+                    marketingFocus.push('Подчеркивание боевой системы и механик');
+                    marketingFocus.push('Демонстрация разнообразия противников и испытаний');
+                    break;
+                case 'adventure':
+                    marketingFocus.push('Акцент на увлекательность приключения и исследования');
+                    marketingFocus.push('Подчеркивание атмосферы и художественного стиля');
+                    marketingFocus.push('Демонстрация интересных локаций и персонажей');
+                    break;
+                case 'puzzle':
+                    marketingFocus.push('Акцент на уникальность головоломок и задач');
+                    marketingFocus.push('Подчеркивание нарастающей сложности и удовлетворения от решений');
+                    marketingFocus.push('Демонстрация визуального стиля и механик');
+                    break;
+                case 'platformer':
+                    marketingFocus.push('Акцент на плавность управления и чувство движения');
+                    marketingFocus.push('Подчеркивание разнообразия уровней и испытаний');
+                    marketingFocus.push('Демонстрация визуального стиля и персонажей');
+                    break;
+                case 'horror':
+                    marketingFocus.push('Акцент на атмосферу страха и напряжения');
+                    marketingFocus.push('Подчеркивание психологических аспектов и уникальных механик');
+                    marketingFocus.push('Ограниченное демонстрирование монстров/угроз для сохранения тайны');
+                    break;
+                default:
+                    marketingFocus.push('Акцент на уникальные особенности игры');
+                    marketingFocus.push('Подчеркивание качества исполнения и инноваций');
+                    marketingFocus.push('Демонстрация ключевых механик и визуального стиля');
+            }
+            
+            // Add focus based on features (simplified)
+            if (gameFeatures.toLowerCase().includes('сюжет') || gameFeatures.toLowerCase().includes('история')) {
+                marketingFocus.push('Подчеркивание нарративной составляющей и сюжетных поворотов');
+            }
+            
+            if (gameFeatures.toLowerCase().includes('мультиплеер') || gameFeatures.toLowerCase().includes('онлайн')) {
+                marketingFocus.push('Акцент на социальные аспекты и командное взаимодействие');
+            }
+            
+            // Generate marketing channels based on platforms and target audience
+            const marketingChannels = [];
+            
+            // Basics for all games
+            marketingChannels.push('Страница в Steam/соответствующем магазине с качественными материалами');
+            marketingChannels.push('Сообщество Discord для сбора и взаимодействия с фанатами');
+            
+            if (platforms.includes('steam')) {
+                marketingChannels.push('Активное участие в фестивалях Steam (Steam Next Fest)');
+                marketingChannels.push('Работа с куратором контента Steam и создание хорошо оформленных страниц сообщества');
+            }
+            
+            if (platforms.includes('mobile-ios') || platforms.includes('mobile-android')) {
+                marketingChannels.push('Кампании мобильной рекламы (Facebook Ads, Google UAC, TikTok Ads)');
+                marketingChannels.push('ASO-оптимизация (App Store Optimization) для повышения органических установок');
+                marketingChannels.push('Сотрудничество с мобильными инфлюенсерами и каналами обзоров');
+            }
+            
+            if (platforms.includes('xbox') || platforms.includes('playstation') || platforms.includes('nintendo')) {
+                marketingChannels.push('Взаимодействие с платформодержателями для возможного включения в программы типа PS Plus, Xbox Game Pass, Nintendo eShop Featured');
+                marketingChannels.push('Участие в выставках и презентациях консольных игр');
+            }
+            
+            if (targetAudience.toLowerCase().includes('хардкор') || 
+                targetAudience.toLowerCase().includes('геймер') || 
+                targetAudience.toLowerCase().includes('core')) {
+                marketingChannels.push('Присутствие на тематических форумах (Reddit, ResetEra)');
+                marketingChannels.push('Сотрудничество с нишевыми стримерами и ютуберами в вашем жанре');
+                marketingChannels.push('Выпуск подробных обзоров механик, дневников разработчиков');
+            }
+            
+            if (targetAudience.toLowerCase().includes('казуал') || 
+                targetAudience.toLowerCase().includes('casual') || 
+                targetAudience.toLowerCase().includes('широк')) {
+                marketingChannels.push('Активное присутствие в массовых соцсетях (Instagram, TikTok, Facebook)');
+                marketingChannels.push('Простые, понятные трейлеры и рекламные материалы');
+                marketingChannels.push('Сотрудничество с популярными стримерами вне хардкорной игровой сцены');
+            }
+            
+            // Generate genre-specific tasks
+            const genreTasks = [];
+            
+            switch(gameGenre) {
+                case 'rpg':
+                    genreTasks.push('Подготовить обзор системы развития персонажа для пресс-кита');
+                    genreTasks.push('Создать wiki-страницу с базовой информацией о мире игры и ключевых персонажах');
+                    genreTasks.push('Снять отдельное видео о боевой системе и прогрессии для YouTube');
+                    break;
+                case 'strategy':
+                    genreTasks.push('Организовать закрытый турнир с бета-тестерами и записать геймплейные ролики');
+                    genreTasks.push('Подготовить подробный разбор механик, фракций или рас для пресс-кита');
+                    genreTasks.push('Выпустить серию обучающих видео перед релизом');
+                    break;
+                case 'horror':
+                    genreTasks.push('Собрать подборку реакций стримеров на хоррор-моменты для маркетинговых материалов');
+                    genreTasks.push('Разместить информацию об игре на специализированных хоррор-форумах и в сообществах');
+                    genreTasks.push('Подготовить тизер-трейлер, который создает атмосферу, но не раскрывает слишком много');
+                    break;
+                // Add more genre-specific tasks
+                default:
+                    genreTasks.push('Выделить уникальные особенности в вашем жанре для маркетинговых материалов');
+                    genreTasks.push('Изучить успешные кейсы маркетинга похожих игр и адаптировать стратегии под свой проект');
+            }
+            
+            // Generate platform-specific tasks
+            const platformTasks = [];
+            
+            if (platforms.includes('steam')) {
+                platformTasks.push('Подготовить страницу игры в Steam с учетом всех требований (теги, трейлер, минимум 5 скриншотов)');
+                platformTasks.push('Запланировать участие в следующем Steam Next Fest с подготовкой демо-версии');
+                platformTasks.push('Настроить акки-карточки в Steam и создать значки');
+            }
+            
+            if (platforms.includes('xbox') || platforms.includes('playstation')) {
+                platformTasks.push('Пройти сертификацию console submission requirements заблаговременно до релиза');
+                platformTasks.push('Проработать вопрос достижений/трофеев для привлечения коллекционеров');
+                platformTasks.push('Исследовать возможность участия в программах подписки (Game Pass, PS Plus)');
+            }
+            
+            if (platforms.includes('mobile-ios')) {
+                platformTasks.push('Подготовить страницу в App Store с учетом требований Apple (скриншоты всех форматов, App Preview)');
+                platformTasks.push('Настроить возможность пре-заказа в App Store');
+                platformTasks.push('Проработать стратегию ASO-оптимизации (ключевые слова, описание)');
+            }
+            
+            if (platforms.includes('mobile-android')) {
+                platformTasks.push('Подготовить страницу в Google Play с учетом всех требований и возможностей');
+                platformTasks.push('Настроить кампанию предрегистрации в Google Play');
+                platformTasks.push('Исследовать возможности партнерства с производителями Android-устройств');
+            }
+            
+            // Render results
+            marketingFocus.forEach(item => {
+                const li = document.createElement('li');
+                li.textContent = item;
+                document.getElementById('marketing-focus').appendChild(li);
+            });
+            
+            marketingChannels.forEach(item => {
+                const li = document.createElement('li');
+                li.textContent = item;
+                document.getElementById('marketing-channels').appendChild(li);
+            });
+            
+            genreTasks.forEach(item => {
+                const li = document.createElement('li');
+                li.textContent = item;
+                document.getElementById('genre-tasks').appendChild(li);
+            });
+            
+            platformTasks.forEach(item => {
+                const li = document.createElement('li');
+                li.textContent = item;
+                document.getElementById('platform-tasks').appendChild(li);
+            });
+        }
+        
+        // Additional button handlers for the generator
+        document.getElementById('export-pdf-btn').addEventListener('click', () => {
+            const gameName = document.getElementById('game-name').value;
+            
+            // Create a printable version of the generated plan
+            const printWindow = window.open('', '_blank');
+            printWindow.document.write(`
+                <!DOCTYPE html>
+                <html>
+                <head>
+                    <title>Маркетинговый план для ${gameName}</title>
+                    <meta charset="UTF-8">
+                    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+                    <style>
+                        body { 
+                            font-family: Arial, sans-serif; 
+                            padding: 40px; 
+                            color: #333;
+                            line-height: 1.5;
+                        }
+                        h1 { color: #2563eb; margin-bottom: 20px; }
+                        h2 { color: #1d4ed8; margin-top: 30px; margin-bottom: 15px; }
+                        .section { margin-bottom: 30px; }
+                        ul { padding-left: 20px; }
+                        li { margin-bottom: 8px; }
+                        .header { 
+                            display: flex;
+                            align-items: center;
+                            margin-bottom: 30px;
+                            border-bottom: 2px solid #2563eb;
+                            padding-bottom: 15px;
+                        }
+                        .logo {
+                            margin-right: 15px;
+                            font-size: 32px;
+                            color: #2563eb;
+                        }
+                        @media print {
+                            body { padding: 0; }
+                            .print-button { display: none; }
+                        }
+                        .print-button {
+                            background-color: #2563eb;
+                            color: white;
+                            border: none;
+                            padding: 10px 20px;
+                            border-radius: 5px;
+                            cursor: pointer;
+                            margin-top: 30px;
+                        }
+                    </style>
+                </head>
+                <body>
+                    <div class="header">
+                        <div class="logo">🎮</div>
+                        <div>
+                            <h1>Маркетинговый план для: ${gameName}</h1>
+                            <p>Дата создания: ${new Date().toLocaleDateString()}</p>
+                        </div>
+                    </div>
+                    
+                    <div class="section">
+                        <h2>Рекомендуемый фокус для маркетинга:</h2>
+                        <ul>
+                            ${Array.from(document.getElementById('marketing-focus').children).map(li => `<li>${li.textContent}</li>`).join('')}
+                        </ul>
+                    </div>
+                    
+                    <div class="section">
+                        <h2>Рекомендуемые каналы продвижения:</h2>
+                        <ul>
+                            ${Array.from(document.getElementById('marketing-channels').children).map(li => `<li>${li.textContent}</li>`).join('')}
+                        </ul>
+                    </div>
+                    
+                    <div class="section">
+                        <h2>Дополнительные задачи для вашего жанра:</h2>
+                        <ul>
+                            ${Array.from(document.getElementById('genre-tasks').children).map(li => `<li>${li.textContent}</li>`).join('')}
+                        </ul>
+                    </div>
+                    
+                    <div class="section">
+                        <h2>Дополнительные задачи для вашей платформы:</h2>
+                        <ul>
+                            ${Array.from(document.getElementById('platform-tasks').children).map(li => `<li>${li.textContent}</li>`).join('')}
+                        </ul>
+                    </div>
+                    
+                    <button class="print-button" onclick="window.print()">Распечатать план</button>
+                </body>
+                </html>
+            `);
+            printWindow.document.close();
+        });
+        
+        document.getElementById('add-to-plan-btn').addEventListener('click', () => {
+            // Get generated tasks
+            const genreTasks = Array.from(document.getElementById('genre-tasks').children).map(li => li.textContent);
+            const platformTasks = Array.from(document.getElementById('platform-tasks').children).map(li => li.textContent);
+            
+            // Determine where to add tasks based on their nature
+            const announceContainer = document.querySelector('[data-section="announce"]');
+            const releaseContainer = document.querySelector('[data-section="release"]');
+            const postreleaseContainer = document.querySelector('[data-section="postrelease"]');
+            
+            // Counter for new items
+            let newTasksCount = 0;
+            
+            // Add genre tasks (split between announce and release)
+            genreTasks.forEach((task, index) => {
+                const container = index < genreTasks.length / 2 ? announceContainer : releaseContainer;
+                const itemId = `${container.getAttribute('data-section')}-custom-${Date.now()}-${newTasksCount++}`;
+                
+                const newItem = document.createElement('div');
+                newItem.className = 'checklist-item';
+                newItem.innerHTML = `
+                    <input type="checkbox" id="${itemId}" data-section="${container.getAttribute('data-section')}">
+                    <label for="${itemId}">${task}</label>
+                `;
+                
+                container.appendChild(newItem);
+                
+                // Add event listener to the new checkbox
+                document.getElementById(itemId).addEventListener('change', () => {
+                    updateProgress(container.getAttribute('data-section'));
+                });
+            });
+            
+            // Add platform tasks (mostly to release and post-release)
+            platformTasks.forEach((task, index) => {
+                const container = index < platformTasks.length / 2 ? releaseContainer : postreleaseContainer;
+                const itemId = `${container.getAttribute('data-section')}-custom-${Date.now()}-${newTasksCount++}`;
+                
+                const newItem = document.createElement('div');
+                newItem.className = 'checklist-item';
+                newItem.innerHTML = `
+                    <input type="checkbox" id="${itemId}" data-section="${container.getAttribute('data-section')}">
+                    <label for="${itemId}">${task}</label>
+                `;
+                
+                container.appendChild(newItem);
+                
+                // Add event listener to the new checkbox
+                document.getElementById(itemId).addEventListener('change', () => {
+                    updateProgress(container.getAttribute('data-section'));
+                });
+            });
+            
+            // Update the progress for sections we've added to
+            updateProgress('announce');
+            updateProgress('release');
+            updateProgress('postrelease');
+            
+            // Show notification
+            const notification = document.createElement('div');
+            notification.className = 'fixed top-4 right-4 bg-green-500 text-white px-4 py-2 rounded shadow-lg z-50 animate-fade-in';
+            notification.style.animation = 'fadeIn 0.3s ease-in-out, fadeOut 0.3s ease-in-out 3s forwards';
+            notification.innerHTML = `<div class="flex items-center"><i class="fas fa-check-circle mr-2"></i> Задачи успешно добавлены!</div>`;
+            document.body.appendChild(notification);
+            
+            // Add animation for fadeOut
+            const style = document.createElement('style');
+            style.innerHTML = `
+                @keyframes fadeOut {
+                    from { opacity: 1; }
+                    to { opacity: 0; visibility: hidden; }
+                }
+            `;
+            document.head.appendChild(style);
+            
+            // Remove notification after animation
+            setTimeout(() => {
+                document.body.removeChild(notification);
+            }, 3500);
+            
+            // Hide the generated plan result
+            document.getElementById('generated-plan-result').classList.add('hidden');
+            
+            // Switch to announce tab
+            document.querySelector('.nav-tab[data-tab="announce"]').click();
+        });
+        
+        // Add tooltips to checkboxes
+        document.querySelectorAll('.checklist-item label').forEach(label => {
+            const tooltip = document.createElement('div');
+            tooltip.className = 'absolute left-full ml-2 bg-gray-800 text-white px-2 py-1 rounded text-xs whitespace-nowrap hidden';
+            tooltip.style.zIndex = '10';
+            tooltip.textContent = 'Нажмите для отметки';
+            
+            label.style.position = 'relative';
+            label.appendChild(tooltip);
+            
+            label.addEventListener('mouseenter', () => {
+                tooltip.classList.remove('hidden');
+            });
+            
+            label.addEventListener('mouseleave', () => {
+                tooltip.classList.add('hidden');
+            });
+        });
+        
+        // Enable search functionality for tasks
+        const addSearchBox = () => {
+            const tabContents = document.querySelectorAll('.tab-content');
+            
+            tabContents.forEach(content => {
+                if (content.id === 'generator') return; // Skip generator tab
+                
+                const section = content.querySelector('.section-title');
+                
+                const searchBox = document.createElement('div');
+                searchBox.className = 'mb-4';
+                searchBox.innerHTML = `
+                    <div class="relative">
+                        <input type="text" class="search-input w-full p-2 pl-10 border border-gray-300 rounded" 
+                               placeholder="Поиск задач в этом разделе...">
+                        <i class="fas fa-search absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400"></i>
+                    </div>
+                `;
+                
+                section.after(searchBox);
+                
+                const input = searchBox.querySelector('input');
+                input.addEventListener('input', () => {
+                    const searchTerm = input.value.toLowerCase();
+                    const items = content.querySelectorAll('.checklist-item');
+                    
+                    items.forEach(item => {
+                        const text = item.querySelector('label').textContent.toLowerCase();
+                        if (searchTerm === '' || text.includes(searchTerm)) {
+                            item.classList.remove('hidden');
+                        } else {
+                            item.classList.add('hidden');
+                        }
+                    });
+                });
+            });
+        };
+        
+        addSearchBox();
+        
+        // Add date tracking to tasks
+        const addDateTracking = () => {
+            // Add date completed attribute to checkboxes
+            document.querySelectorAll('input[type="checkbox"][data-section]').forEach(checkbox => {
+                checkbox.addEventListener('change', () => {
+                    if (checkbox.checked) {
+                        const now = new Date();
+                        checkbox.setAttribute('data-completed-date', now.toISOString());
+                        
+                        // Add a small date indicator after the label
+                        const label = checkbox.nextElementSibling;
+                        let dateSpan = label.querySelector('.completed-date');
+                        
+                        if (!dateSpan) {
+                            dateSpan = document.createElement('span');
+                            dateSpan.className = 'completed-date ml-2 text-xs text-gray-500 italic';
+                            label.appendChild(dateSpan);
+                        }
+                        
+                        dateSpan.textContent = `(${now.toLocaleDateString()})`;
+                    } else {
+                        checkbox.removeAttribute('data-completed-date');
+                        
+                        // Remove the date indicator
+                        const label = checkbox.nextElementSibling;
+                        const dateSpan = label.querySelector('.completed-date');
+                        if (dateSpan) {
+                            label.removeChild(dateSpan);
+                        }
+                    }
+                    
+                    // Make sure we update progress
+                    const section = checkbox.getAttribute('data-section');
+                    updateProgress(section);
+                });
+            });
+        };
+        
+        addDateTracking();
+        
+        // Add ability to customize and add new tasks
+        const addCustomTaskFeature = () => {
+            sections.forEach(section => {
+                const container = document.querySelector(`[data-section="${section}"]`);
+                
+                const addButton = document.createElement('button');
+                addButton.className = 'btn btn-outline mt-4 text-sm';
+                addButton.innerHTML = '<i class="fas fa-plus mr-2"></i> Добавить свою задачу';
+                
+                addButton.addEventListener('click', () => {
+                    // Create a modal for adding a new task
+                    const modal = document.createElement('div');
+                    modal.className = 'fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50';
+                    modal.innerHTML = `
+                        <div class="bg-white rounded-lg p-6 w-full max-w-md">
+                            <h3 class="text-lg font-bold mb-4">Добавить задачу в раздел "${section === 'announce' ? 'Анонс' : 
+                                                                 section === 'demo' ? 'Демо' :
+                                                                 section === 'nextfest' ? 'Steam Next Fest' :
+                                                                 section === 'release' ? 'Релиз' : 'Пост-релиз'}"</h3>
+                            <textarea class="w-full p-2 border border-gray-300 rounded mb-4" placeholder="Введите описание задачи" rows="3"></textarea>
+                            <div class="flex justify-end space-x-2">
+                                <button class="btn btn-outline cancel-btn">Отмена</button>
+                                <button class="btn btn-primary add-task-btn">Добавить</button>
+                            </div>
+                        </div>
+                    `;
+                    
+                    document.body.appendChild(modal);
+                    
+                    // Set focus on textarea
+                    modal.querySelector('textarea').focus();
+                    
+                    // Add event listeners
+                    modal.querySelector('.cancel-btn').addEventListener('click', () => {
+                        document.body.removeChild(modal);
+                    });
+                    
+                    modal.querySelector('.add-task-btn').addEventListener('click', () => {
+                        const taskText = modal.querySelector('textarea').value.trim();
+                        
+                        if (taskText) {
+                            const itemId = `${section}-custom-${Date.now()}`;
+                            
+                            const newItem = document.createElement('div');
+                            newItem.className = 'checklist-item';
+                            newItem.innerHTML = `
+                                <input type="checkbox" id="${itemId}" data-section="${section}">
+                                <label for="${itemId}">${taskText}</label>
+                                <button class="delete-task-btn ml-2 text-gray-400 hover:text-red-500" title="Удалить задачу">
+                                    <i class="fas fa-trash-alt"></i>
+                                </button>
+                            `;
+                            
+                            container.appendChild(newItem);
+                            
+                            // Add event listener to the new checkbox
+                            document.getElementById(itemId).addEventListener('change', () => {
+                                updateProgress(section);
+                            });
+                            
+                            // Add event listener to delete button
+                            newItem.querySelector('.delete-task-btn').addEventListener('click', () => {
+                                // Use the custom modal instead of confirm
+                                showConfirmModal('Удалить задачу?', 'Вы уверены, что хотите удалить эту задачу?', () => {
+                                    container.removeChild(newItem);
+                                    updateProgress(section);
+                                    saveProgress(); // Save after deletion
+                                });
+                            });
+                            
+                            updateProgress(section);
+                        }
+                        
+                        document.body.removeChild(modal);
+                    });
+                    
+                    // Close on background click
+                    modal.addEventListener('click', (e) => {
+                        if (e.target === modal) {
+                            document.body.removeChild(modal);
+                        }
+                    });
+                });
+                
+                container.after(addButton);
+                
+                // Add delete buttons to all existing items
+                container.querySelectorAll('.checklist-item').forEach(item => {
+                    // Skip if already has delete button
+                    if (item.querySelector('.delete-task-btn')) return;
+                    
+                    const deleteBtn = document.createElement('button');
+                    deleteBtn.className = 'delete-task-btn ml-2 text-gray-400 hover:text-red-500';
+                    deleteBtn.title = 'Удалить задачу';
+                    deleteBtn.innerHTML = '<i class="fas fa-trash-alt"></i>';
+                    
+                    deleteBtn.addEventListener('click', () => {
+                        // Use the custom modal instead of confirm
+                        showConfirmModal('Удалить задачу?', 'Вы уверены, что хотите удалить эту задачу?', () => {
+                            container.removeChild(item);
+                            updateProgress(section);
+                            saveProgress(); // Save after deletion
+                        });
+                    });
+                    
+                    item.appendChild(deleteBtn);
+                });
+            });
+        };
+        
+        // Call the custom task feature
+        addCustomTaskFeature();
+        
+        // Add a feature to export all progress data
+        const addExportFeature = () => {
+            // --- REMOVED exportBtn creation ---
+            // const exportBtn = document.createElement('button');
+            // exportBtn.className = 'btn btn-outline flex items-center ml-2';
+            // exportBtn.innerHTML = '<i class="fas fa-file-export mr-2"></i> Экспорт данных';
+
+            // Attach listener to the existing export link in the settings menu
+            const exportDataLink = document.getElementById('export-data');
+            if (exportDataLink) {
+                exportDataLink.addEventListener('click', (e) => {
+                    e.preventDefault(); // Prevent default link behavior
+                    // Collect all checklist data
+                    const checklistData = {};
+                    const checkboxStates = JSON.parse(localStorage.getItem('gameMarketingPlanProgress') || '{}');
+
+                    sections.forEach(section => {
+                        checklistData[section] = [];
+                        document.querySelectorAll(`.checklist-container[data-section="${section}"] .checklist-item`).forEach(item => {
+                            const checkbox = item.querySelector('input[type="checkbox"]');
+                            if (!checkbox) return;
+                            const checkboxId = checkbox.id;
+                            const state = checkboxStates[checkboxId] || { checked: checkbox.checked, completedDate: checkbox.getAttribute('data-completed-date') || null, priority: 'normal', text: '' };
+
+                            // Ensure text is captured correctly, especially for custom tasks
+                             const label = item.querySelector('label');
+                             const labelText = label ? label.textContent.replace(/(\(.*\)|важно|опционально)$/, '').trim() : state.text || 'Задача без текста'; // Clean label text
+
+                            checklistData[section].push({
+                                id: checkboxId,
+                                text: labelText,
+                                checked: state.checked,
+                                completedDate: state.completedDate,
+                                priority: state.priority || 'normal' // Ensure priority is saved
+                            });
+                        });
+                    });
+
+                    // Create a JSON file for download
+                    const dataStr = JSON.stringify(checklistData, null, 2);
+                    const dataUri = 'data:application/json;charset=utf-8,'+ encodeURIComponent(dataStr);
+
+                    const exportFileDefaultName = `game-marketing-plan-export-${new Date().toISOString().slice(0, 10)}.json`;
+
+                    const linkElement = document.createElement('a');
+                    linkElement.setAttribute('href', dataUri);
+                    linkElement.setAttribute('download', exportFileDefaultName);
+                    linkElement.click();
+
+                    // Hide settings menu after action
+                    document.getElementById('settings-menu').classList.add('hidden');
+                    showNotification('Данные экспортированы в JSON файл.');
+                });
+            } else {
+                 console.warn("Element with ID 'export-data' not found for attaching export listener.");
+             }
+
+            // --- REMOVED appending exportBtn ---
+            // document.getElementById('save-btn').parentNode.appendChild(exportBtn);
+
+            // --- REMOVED importBtn creation ---
+            // const importBtn = document.createElement('button');
+            // importBtn.className = 'btn btn-outline flex items-center ml-2';
+            // importBtn.innerHTML = '<i class="fas fa-file-import mr-2"></i> Импорт данных';
+
+            // Attach listener to the existing import button in the header
+            const headerImportBtn = document.getElementById('import-btn');
+             if (headerImportBtn) {
+                headerImportBtn.addEventListener('click', () => {
+                    const fileInput = document.createElement('input');
+                    fileInput.type = 'file';
+                    fileInput.accept = '.json';
+                    fileInput.style.display = 'none';
+
+                    fileInput.addEventListener('change', (e) => {
+                        const file = e.target.files[0];
+                        if (!file) return;
+
+                        const reader = new FileReader();
+                        reader.onload = (event) => {
+                            try {
+                                const importedData = JSON.parse(event.target.result);
+                                const newCheckboxStates = {};
+
+                                // Clear existing custom tasks first
+                                document.querySelectorAll('.checklist-item[data-custom="true"]').forEach(item => item.remove());
+                                // Reset standard tasks
+                                document.querySelectorAll('.checklist-item:not([data-custom="true"])').forEach(item => {
+                                    const checkbox = item.querySelector('input[type="checkbox"]');
+                                    if (checkbox) {
+                                        checkbox.checked = false;
+                                        checkbox.removeAttribute('data-completed-date');
+                                        removeDateDisplay(checkbox);
+                                        setTaskPriority(item, 'normal'); // Reset priority
+                                    }
+                                });
+
+
+                                // Process imported data
+                                for (const section in importedData) {
+                                     if (!sections.includes(section)) continue; // Skip unknown sections
+
+                                    const container = document.querySelector(`.checklist-container[data-section="${section}"]`);
+                                     if (!container) {
+                                         console.warn(`Container for section ${section} not found during import.`);
+                                         continue;
+                                     }
+
+
+                                    importedData[section].forEach(item => {
+                                        const checkbox = document.getElementById(item.id);
+                                        let targetItem = checkbox ? checkbox.closest('.checklist-item') : null;
+
+                                        // If checkbox exists (standard task), update it
+                                        if (checkbox && targetItem) {
+                                            checkbox.checked = item.checked;
+                                             setTaskPriority(targetItem, item.priority || 'normal'); // Set priority
+                                             if (item.checked && item.completedDate) {
+                                                 checkbox.setAttribute('data-completed-date', item.completedDate);
+                                                restoreDateDisplay(checkbox); // Use restore function
+                                             } else {
+                                                 checkbox.removeAttribute('data-completed-date');
+                                                 removeDateDisplay(checkbox);
+                                             }
+                                             // Update state for saving
+                                             newCheckboxStates[item.id] = {
+                                                 checked: item.checked,
+                                                 completedDate: item.completedDate || null,
+                                                 priority: item.priority || 'normal',
+                                                 text: item.text // Keep text for potential future use
+                                             };
+                                        }
+                                        // If it doesn't exist, it's a custom task, create it
+                                        else if (item.id && item.text && section && container) {
+                                             // Check if element already exists (e.g., from previous partial import)
+                                             if (!document.getElementById(item.id)) {
+                                                 targetItem = addChecklistItem(container, section, item.text, item.id, item.checked, item.completedDate, false, item.priority || 'normal');
+                                                 // Update state for saving
+                                                 newCheckboxStates[item.id] = {
+                                                     checked: item.checked,
+                                                     completedDate: item.completedDate || null,
+                                                     priority: item.priority || 'normal',
+                                                     text: item.text
+                                                 };
+                                             } else {
+                                                 console.warn(`Custom task with ID ${item.id} already exists. Skipping duplicate creation.`);
+                                             }
+                                        } else {
+                                             console.warn("Skipping invalid item during import:", item);
+                                         }
+                                    });
+
+                                    // Update progress for this section after processing all its items
+                                    updateProgress(section);
+                                }
+
+                                // Save the newly imported state
+                                localStorage.setItem('gameMarketingPlanProgress', JSON.stringify(newCheckboxStates));
+
+                                showNotification('Данные успешно импортированы!');
+
+                            } catch (error) {
+                                console.error('Error importing data:', error);
+                                showNotification('Ошибка при импорте данных. Проверьте формат файла.', 'error');
+                            } finally {
+                                // Clean up file input
+                                if (document.body.contains(fileInput)) {
+                                     document.body.removeChild(fileInput);
+                                 }
+                             }
+                        };
+                        reader.onerror = () => {
+                             showNotification('Не удалось прочитать файл.', 'error');
+                             if (document.body.contains(fileInput)) {
+                                 document.body.removeChild(fileInput);
+                             }
+                         };
+                        reader.readAsText(file);
+                    });
+
+                    document.body.appendChild(fileInput);
+                    fileInput.click();
+
+                 });
+             } else {
+                 console.warn("Element with ID 'import-btn' not found for attaching import listener.");
+             }
+
+            // --- REMOVED appending importBtn ---
+            // document.getElementById('save-btn').parentNode.appendChild(importBtn);
+        };
+
+        // --- DELETED BLOCK --- (No longer needed as buttons are not created here)
+// ... existing code ...
+// --- Initialization and Event Handlers ---
+
+        // Show simple notification
+        function showNotification(message, type = 'success') {
+            const notification = document.createElement('div');
+            const bgColor = type === 'error' ? 'bg-red-500' : 'bg-green-500';
+            const icon = type === 'error' ? 'fa-exclamation-circle' : 'fa-check-circle';
+
+            notification.className = `fixed top-4 right-4 ${bgColor} text-white px-4 py-2 rounded shadow-lg z-50 opacity-0 transition-opacity duration-300`;
+            notification.style.transform = 'translateY(-20px)'; // Start off-screen
+            notification.innerHTML = `<div class="flex items-center"><i class="fas ${icon} mr-2"></i> ${message}</div>`;
+            document.body.appendChild(notification);
+
+            // Animate in
+            setTimeout(() => {
+                 notification.style.opacity = '1';
+                 notification.style.transform = 'translateY(0)';
+            }, 50);
+
+
+            // Animate out and remove
+            setTimeout(() => {
+                 notification.style.opacity = '0';
+                 notification.style.transform = 'translateY(-20px)';
+                 setTimeout(() => {
+                     if (document.body.contains(notification)) {
+                         document.body.removeChild(notification);
+                     }
+                 }, 300); // Wait for transition
+            }, 3500); // Display duration
+        }
+
+        // Function to update date display on label
+        function updateDateDisplay(checkbox, date) {
+            removeDateDisplay(checkbox); // Remove existing first
+            const label = checkbox.nextElementSibling;
+            if (!label) return;
+
+            const dateSpan = document.createElement('span');
+            dateSpan.className = 'completed-date ml-2 text-xs text-gray-500 dark:text-gray-400 italic';
+            dateSpan.textContent = `(${date.toLocaleDateString()})`;
+            label.appendChild(dateSpan);
+        }
+
+        // Function to remove date display from label
+        function removeDateDisplay(checkbox) {
+            const label = checkbox.nextElementSibling;
+            if (!label) return;
+            const dateSpan = label.querySelector('.completed-date');
+            if (dateSpan) {
+                label.removeChild(dateSpan);
+            }
+        }
+
+        // Function to restore date display on load
+        function restoreDateDisplay(checkbox) {
+            const completedDateStr = checkbox.getAttribute('data-completed-date');
+            if (checkbox.checked && completedDateStr) {
+                updateDateDisplay(checkbox, new Date(completedDateStr));
+            } else {
+                removeDateDisplay(checkbox);
+            }
+        }
+
+
+        // Save and load progress functionality
+        function saveProgress() {
+            const checkboxStates = {};
+
+            document.querySelectorAll('.checklist-item').forEach(item => {
+                const checkbox = item.querySelector('input[type="checkbox"]');
+                if (!checkbox) return; // Skip items without checkboxes
+
+                 const label = item.querySelector('label');
+                 // Extract clean text, removing date and priority badges
+                 const labelText = label ? label.textContent.replace(/(\(.*\)|важно|опционально)$/, '').trim() : '';
+
+                checkboxStates[checkbox.id] = {
+                    checked: checkbox.checked,
+                    completedDate: checkbox.getAttribute('data-completed-date') || null,
+                    priority: item.classList.contains('task-high-priority') ? 'high' :
+                               item.classList.contains('task-optional') ? 'optional' : 'normal',
+                    text: labelText, // Store clean text
+                     isCustom: item.hasAttribute('data-custom') // Store if it's custom
+                };
+            });
+
+            try {
+                localStorage.setItem('gameMarketingPlanProgress', JSON.stringify(checkboxStates));
+                 // showAutoSaveIndicator(); // Optional: re-enable if needed
+             } catch (e) {
+                 console.error("Could not save progress to localStorage:", e);
+                 showNotification("Не удалось сохранить прогресс. Возможно, хранилище переполнено.", "error");
+             }
+        }
+
+        // Показать индикатор автосохранения
+        function showAutoSaveIndicator() {
+            // Проверяем, существует ли уже индикатор
+            let saveIndicator = document.getElementById('auto-save-indicator');
+            
+            if (!saveIndicator) {
+                saveIndicator = document.createElement('div');
+                saveIndicator.id = 'auto-save-indicator';
+                saveIndicator.className = 'fixed bottom-4 right-4 bg-green-500 text-white px-3 py-1 rounded-lg shadow-md text-sm z-50 opacity-0 transition-opacity duration-300';
+                saveIndicator.innerHTML = '<i class="fas fa-save mr-2"></i> Автосохранение...';
+                document.body.appendChild(saveIndicator);
+            }
+            
+            // Показываем индикатор
+            saveIndicator.style.opacity = '1';
+            
+            // Скрываем через 1.5 секунды
+            setTimeout(() => {
+                saveIndicator.style.opacity = '0';
+            }, 1500);
+        }
+
+        // Добавить пользовательскую задачу (обновлено для согласованности)
+        function addCustomTask(container, sectionId, id, text, checked = false, completedDate = null, priority = 'normal') {
+            // Используем общую функцию addChecklistItem
+             const newItem = addChecklistItem(container, sectionId, text, id, checked, completedDate, false, priority);
+             newItem.setAttribute('data-custom', 'true'); // Помечаем как пользовательскую явно
+            return newItem;
+        }
+
+        // --- Document Ready ---
+        document.addEventListener('DOMContentLoaded', () => {
+            // --- Define initialization functions ---
+            const initPersistence = () => loadProgress();
+            const initGenerator = () => { /* Add generator setup if needed */ };
+            const initCustomTasks = () => { /* Add 'add task' button setup if needed */ };
+            const initImportExport = () => addExportFeature(); // Attaches listeners
+            const initSettings = () => {
+                // Dark mode toggle
+                const darkModeToggle = document.getElementById('dark-mode-toggle');
+                const body = document.body;
+                if (localStorage.getItem('darkMode') === 'enabled') {
+                    body.classList.add('dark-mode');
+                    darkModeToggle.innerHTML = '<i class="fas fa-sun mr-2"></i> Светлая тема';
+                } else {
+                     darkModeToggle.innerHTML = '<i class="fas fa-moon mr-2"></i> Темная тема';
+                 }
+                darkModeToggle.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    body.classList.toggle('dark-mode');
+                    if (body.classList.contains('dark-mode')) {
+                        localStorage.setItem('darkMode', 'enabled');
+                        darkModeToggle.innerHTML = '<i class="fas fa-sun mr-2"></i> Светлая тема';
+                    } else {
+                        localStorage.setItem('darkMode', 'disabled');
+                        darkModeToggle.innerHTML = '<i class="fas fa-moon mr-2"></i> Темная тема';
+                    }
+                    settingsMenu.classList.add('hidden'); // Close menu after toggle
+                });
+
+                // Settings menu toggle
+                const settingsBtn = document.getElementById('settings-btn');
+                const settingsMenu = document.getElementById('settings-menu');
+                settingsBtn.addEventListener('click', () => settingsMenu.classList.toggle('hidden'));
+                document.addEventListener('click', (e) => {
+                    if (!settingsBtn.contains(e.target) && !settingsMenu.contains(e.target)) {
+                        settingsMenu.classList.add('hidden');
+                    }
+                });
+            };
+            const initBackup = () => {
+                 addBackupFeature(); // Adds listener to backup settings link
+                 checkAutoBackup();
+                 setInterval(checkAutoBackup, 60 * 60 * 1000);
+             };
+            const initSearch = () => addSearchBox();
+             const initWalkthrough = () => { /* Add walkthrough setup if needed */ };
+
+             // --- Call initialization functions ---
+            initPersistence(); // Load data FIRST
+             initExistingItemEnhancements(); // Enhance loaded/static items (incl. drag/drop, context menus)
+            initGenerator();
+            initCustomTasks(); // Setup "add task" buttons
+            initImportExport(); // Setup import/export listeners in header/menu
+            initSettings(); // Setup dark mode, settings menu toggle
+            initBackup(); // Setup backup modal link and auto-backup check
+            initSearch(); // Add search boxes
+             // initWalkthrough(); // Setup walkthrough if needed
+
+             // Final progress update after all setup
+             sections.forEach(section => updateProgress(section));
+
+             // Attach reset button listener
+             const resetBtn = document.getElementById('reset-btn');
+             if (resetBtn) {
+                 resetBtn.addEventListener('click', handleResetClick);
++                 console.log("Reset button listener attached."); // DEBUG
+             } else {
+                 console.warn("Reset button not found.");
+             }
+
+              // Attach Generator button listener
+              const genPlanBtn = document.getElementById('generate-plan-btn');
+              if (genPlanBtn) {
+                  genPlanBtn.addEventListener('click', handleGeneratePlanClick);
+              } else {
+                   console.warn("Generate Plan button not found.");
+               }
+
+               // Attach Generator -> Add to Plan button listener
+               const addToPlanBtn = document.getElementById('add-to-plan-btn');
+               if (addToPlanBtn) {
+                   addToPlanBtn.addEventListener('click', handleAddToPlanClick);
+               } else {
+                   console.warn("Add to Plan button not found.");
+               }
+
+               // Attach Generator -> Export PDF button listener
+               const exportPdfBtn = document.getElementById('export-pdf-btn');
+               if (exportPdfBtn) {
+                   exportPdfBtn.addEventListener('click', handleExportPdfClick);
+               } else {
+                   console.warn("Export PDF button not found.");
+               }
+
+                // Initial tab setup (moved from separate script)
+                const tabLinks = document.querySelectorAll('.tab-buttons .nav-tab');
+                const tabContents = document.querySelectorAll('.tab-content');
+                const initialHash = window.location.hash;
+
+                tabLinks.forEach(tabLink => {
+                    tabLink.addEventListener('click', function(e) {
+                        e.preventDefault();
+                        const targetId = this.getAttribute('data-target');
+                        switchTab(targetId, tabLinks, tabContents);
+                        // Update hash without jumping
+                         history.pushState(null, null, '#' + targetId);
+                    });
+
+                    // Activate tab based on hash on load
+                     if (initialHash && tabLink.getAttribute('href') === initialHash) {
+                         switchTab(tabLink.getAttribute('data-target'), tabLinks, tabContents);
+                     }
+                });
+
+                 // Activate first tab if no hash matches
+                 if (!initialHash || !document.querySelector(`.nav-tab[href="${initialHash}"]`)) {
+                     if (tabLinks.length > 0) {
+                         switchTab(tabLinks[0].getAttribute('data-target'), tabLinks, tabContents);
+                     }
+                 }
+
+        });
+        // END OF DOMContentLoaded listener
+
+         // Helper function for switching tabs
+         function switchTab(targetId, tabLinks, tabContents) {
+             tabLinks.forEach(link => {
+                 link.classList.toggle('active', link.getAttribute('data-target') === targetId);
+             });
+             tabContents.forEach(content => {
+                 content.classList.toggle('active', content.id === targetId);
+             });
+         }
+
+         // Helper function for generator button click
+         function handleGeneratePlanClick() {
+             // Existing validation logic...
+              if (!validateGeneratorForm()) return; // Use validation function
+
+             const gameName = document.getElementById('game-name').value;
+             const gameGenre = document.getElementById('game-genre').value;
+             const platforms = Array.from(document.querySelectorAll('input[name="platform"]:checked')).map(el => el.value);
+             const targetAudience = document.getElementById('target-audience').value;
+             const gameFeatures = document.getElementById('game-features').value;
+             const plannedAnnounce = document.getElementById('planned-announce').value;
+             const plannedRelease = document.getElementById('planned-release').value;
+             const budget = document.getElementById('budget').value;
+
+             // Add loading state to button
+             const generateBtn = document.getElementById('generate-plan-btn');
+             generateBtn.classList.add('loading');
+             generateBtn.disabled = true;
+
+             // Simulate generation (replace with actual logic if needed)
+             setTimeout(() => {
+                  generatePlan(gameName, gameGenre, platforms, targetAudience, gameFeatures, plannedAnnounce, plannedRelease, budget);
+
+                 document.getElementById('generated-plan-result').classList.remove('hidden');
+                 document.getElementById('result-game-name').textContent = gameName;
+                 document.getElementById('generated-plan-result').scrollIntoView({ behavior: 'smooth', block: 'start' });
+
+                  // Remove loading state
+                  generateBtn.classList.remove('loading');
+                  generateBtn.disabled = false;
+             }, 500); // Simulate short delay
+         }
+
+        // Helper function for validating generator form
+        function validateGeneratorForm() {
+            let isValid = true;
+            const fields = [
+                { id: 'game-name', errorId: 'game-name-error', message: 'Название игры обязательно.' },
+                { id: 'game-genre', errorId: 'game-genre-error', message: 'Выберите жанр.', isSelect: true },
+                { id: 'target-audience', errorId: 'target-audience-error', message: 'Описание целевой аудитории обязательно.' },
+                { id: 'game-features', errorId: 'game-features-error', message: 'Описание особенностей игры обязательно.' }
+            ];
+
+            // Clear previous errors
+            document.querySelectorAll('.error-message').forEach(el => el.style.display = 'none');
+            document.querySelectorAll('.generator-form input, .generator-form select, .generator-form textarea').forEach(el => el.classList.remove('border-red-500'));
+
+
+            fields.forEach(field => {
+                const input = document.getElementById(field.id);
+                const errorEl = document.getElementById(field.errorId);
+                 const value = input.value.trim();
+
+                if (!value) {
+                    isValid = false;
+                     input.classList.add('border-red-500');
+                     errorEl.textContent = field.message;
+                     errorEl.style.display = 'block';
+                 } else {
+                     input.classList.remove('border-red-500');
+                     errorEl.style.display = 'none';
+                 }
+            });
+
+             // Check platforms
+            const platforms = document.querySelectorAll('input[name="platform"]:checked');
+            const platformErrorEl = document.getElementById('platform-error');
+            if (platforms.length === 0) {
+                isValid = false;
+                 platformErrorEl.textContent = 'Выберите хотя бы одну платформу.';
+                 platformErrorEl.style.display = 'block';
+             } else {
+                 platformErrorEl.style.display = 'none';
+             }
+
+            return isValid;
+        }
+
+
+         // Helper function for adding generated tasks to plan
+         function handleAddToPlanClick() {
+            const genreTasks = Array.from(document.getElementById('genre-tasks').children).map(li => li.textContent);
+            const platformTasks = Array.from(document.getElementById('platform-tasks').children).map(li => li.textContent);
+
+            const announceContainer = document.querySelector('.checklist-container[data-section="announce"]');
+            const releaseContainer = document.querySelector('.checklist-container[data-section="release"]');
+            const postreleaseContainer = document.querySelector('.checklist-container[data-section="postrelease"]');
+
+            let newTasksCount = 0; // Counter for unique IDs if needed
+
+             // Add genre tasks (simple split for now)
+             genreTasks.forEach((task, index) => {
+                 const section = index < genreTasks.length / 2 ? 'announce' : 'release';
+                 const container = section === 'announce' ? announceContainer : releaseContainer;
+                 const itemId = `${section}-generated-${Date.now()}-${newTasksCount++}`;
+                 addChecklistItem(container, section, task, itemId, false, null, true); // Mark as generated
+             });
+
+             // Add platform tasks (simple split for now)
+             platformTasks.forEach((task, index) => {
+                 const section = index < platformTasks.length / 2 ? 'release' : 'postrelease';
+                 const container = section === 'release' ? releaseContainer : postreleaseContainer;
+                 const itemId = `${section}-generated-${Date.now()}-${newTasksCount++}`;
+                 addChecklistItem(container, section, task, itemId, false, null, true); // Mark as generated
+             });
+
+             // Update progress for affected sections
+             updateProgress('announce');
+             updateProgress('release');
+             updateProgress('postrelease');
+             saveProgress(); // Save the newly added tasks
+
+             showNotification('Задачи из генератора добавлены в план.');
+
+             // Hide generated results and switch tab
+             document.getElementById('generated-plan-result').classList.add('hidden');
+             const announceTab = document.querySelector('.nav-tab[data-target="announce"]');
+             if (announceTab) {
+                  switchTab('announce', document.querySelectorAll('.tab-buttons .nav-tab'), document.querySelectorAll('.tab-content'));
+                  history.pushState(null, null, '#announce'); // Update hash
+             }
+         }
+
+         // Helper function for exporting generated plan to PDF
+         function handleExportPdfClick() {
+             const gameName = document.getElementById('result-game-name').textContent || "Моя игра";
+             const focusItems = Array.from(document.getElementById('marketing-focus').children).map(li => `<li>${li.textContent}</li>`).join('');
+             const channelItems = Array.from(document.getElementById('marketing-channels').children).map(li => `<li>${li.textContent}</li>`).join('');
+             const genreItems = Array.from(document.getElementById('genre-tasks').children).map(li => `<li>${li.textContent}</li>`).join('');
+             const platformItems = Array.from(document.getElementById('platform-tasks').children).map(li => `<li>${li.textContent}</li>`).join('');
+
+             const printWindow = window.open('', '_blank');
+             printWindow.document.write(`
+                 <!DOCTYPE html>
+                 <html lang="ru">
+                 <head>
+                     <title>Маркетинговый план для ${gameName}</title>
+                     <meta charset="UTF-8">
+                     <style>
+                         body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; padding: 30px; line-height: 1.6; color: #333; }
+                         h1 { color: #4361ee; border-bottom: 2px solid #4361ee; padding-bottom: 10px; margin-bottom: 25px; }
+                         h2 { color: #3a0ca3; margin-top: 30px; margin-bottom: 15px; }
+                         ul { padding-left: 25px; list-style: disc; }
+                         li { margin-bottom: 10px; }
+                         .section { margin-bottom: 30px; padding: 15px; border-left: 3px solid #4cc9f0; background-color: #f8f9fa; border-radius: 5px;}
+                         .print-button { display: none; } /* Hide button in print view */
+                         @media print {
+                              .no-print { display: none; }
+                          }
+                         .print-button-container { text-align: center; margin-top: 30px; }
+                         button { background-color: #4361ee; color: white; border: none; padding: 12px 25px; border-radius: 8px; cursor: pointer; font-size: 16px; }
+                         button:hover { background-color: #3a0ca3; }
+                     </style>
+                 </head>
+                 <body>
+                     <h1>Маркетинговый план для: ${gameName}</h1>
+                     <p class="no-print">Дата создания: ${new Date().toLocaleDateString()}</p>
+
+                     <div class="section">
+                         <h2>Рекомендуемый фокус для маркетинга:</h2>
+                         <ul>${focusItems}</ul>
+                     </div>
+                     <div class="section">
+                         <h2>Рекомендуемые каналы продвижения:</h2>
+                         <ul>${channelItems}</ul>
+                     </div>
+                     <div class="section">
+                         <h2>Дополнительные задачи (Жанр):</h2>
+                         <ul>${genreItems}</ul>
+                     </div>
+                     <div class="section">
+                         <h2>Дополнительные задачи (Платформы):</h2>
+                         <ul>${platformItems}</ul>
+                     </div>
+
+                     <div class="print-button-container no-print">
+                         <button onclick="window.print()">Распечатать / Сохранить в PDF</button>
+                     </div>
+                 </body>
+                 </html>
+             `);
+             printWindow.document.close();
+         }
+
+        // Add Backup Feature setup
+        function addBackupFeature() {
+            const backupLink = document.getElementById('backup-settings');
+            if (backupLink) {
+                backupLink.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    showBackupModal(); // Call function to show the modal
+                    document.getElementById('settings-menu').classList.add('hidden'); // Close settings menu
+                });
+            } else {
+                console.warn("Backup settings link not found.");
+            }
+        }
+
+         // Function to show Backup Modal
+         function showBackupModal() {
+             // Check if modal already exists
+             if (document.getElementById('backup-modal-backdrop')) return;
+
+             const backdrop = document.createElement('div');
+             backdrop.id = 'backup-modal-backdrop';
+             backdrop.className = 'custom-modal-backdrop show'; // Add 'show' immediately for fade-in
+
+             const modalHtml = `
+                 <div class="custom-modal show">
+                     <div class="custom-modal-header">
+                          <i class="fas fa-cloud-upload-alt text-blue-500"></i>
+                         <h3 class="custom-modal-title">Настройки резервирования</h3>
+                     </div>
+                     <div class="custom-modal-body">
+                         <div class="mb-4">
+                             <label class="flex items-center cursor-pointer">
+                                 <input type="checkbox" id="auto-backup-toggle" class="form-checkbox h-5 w-5 text-blue-600 mr-2">
+                                 <span>Автоматическое резервирование (локально, раз в день)</span>
+                             </label>
+                         </div>
+                         <div class="mb-4">
+                             <button id="backup-now-btn" class="btn btn-primary w-full flex items-center justify-center">
+                                <i class="fas fa-download mr-2"></i> Создать резервную копию сейчас
+                             </button>
+                         </div>
+                         <div class="mb-4">
+                             <label for="restore-backup-file" class="block text-sm font-medium mb-2">Восстановить из файла</label>
+                             <input type="file" id="restore-backup-file" accept=".json" class="w-full text-sm file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-blue-50 file:text-blue-700 hover:file:bg-blue-100">
+                         </div>
+                         <p id="last-backup-info" class="text-xs text-gray-500 dark:text-gray-400 mt-2"></p>
+                     </div>
+                     <div class="custom-modal-footer">
+                         <button class="btn btn-outline close-backup-modal-btn">Закрыть</button>
+                     </div>
+                 </div>
+             `;
+
+             backdrop.innerHTML = modalHtml;
+             document.body.appendChild(backdrop);
+
+             // --- Add Logic ---
+             const autoBackupToggle = document.getElementById('auto-backup-toggle');
+             const backupNowBtn = document.getElementById('backup-now-btn');
+             const restoreInput = document.getElementById('restore-backup-file');
+             const closeBtn = backdrop.querySelector('.close-backup-modal-btn');
+             const lastBackupInfo = document.getElementById('last-backup-info');
+
+             // Set initial state for toggle and last backup info
+             autoBackupToggle.checked = localStorage.getItem('autoBackupEnabled') === 'true';
+             const lastBackupTime = localStorage.getItem('lastBackupTime');
+             if (lastBackupTime) {
+                 lastBackupInfo.textContent = `Последняя авто-копия: ${new Date(parseInt(lastBackupTime)).toLocaleString()}`;
+             } else {
+                 lastBackupInfo.textContent = 'Автоматических копий еще не было.';
+             }
+
+
+             autoBackupToggle.addEventListener('change', () => {
+                 localStorage.setItem('autoBackupEnabled', autoBackupToggle.checked ? 'true' : 'false');
+                 if (autoBackupToggle.checked) {
+                     // Optionally trigger first backup immediately
+                     // performAutoBackup();
+                     showNotification(`Авто-резервирование ${autoBackupToggle.checked ? 'включено' : 'выключено'}.`);
+                 } else {
+                      localStorage.removeItem('lastBackupTime'); // Clear time when disabled
+                      localStorage.removeItem('autoBackupData'); // Clear data when disabled
+                      lastBackupInfo.textContent = 'Автоматическое резервирование отключено.';
+                  }
+             });
+
+             backupNowBtn.addEventListener('click', () => {
+                 const backupData = getCurrentPlanData(); // Get current data
+                 const dataStr = JSON.stringify(backupData, null, 2);
+                 const dataUri = 'data:application/json;charset=utf-8,' + encodeURIComponent(dataStr);
+                 const exportFileDefaultName = `manual-backup-${new Date().toISOString().slice(0, 10)}.json`;
+
+                 const linkElement = document.createElement('a');
+                 linkElement.setAttribute('href', dataUri);
+                 linkElement.setAttribute('download', exportFileDefaultName);
+                 linkElement.click();
+                 showNotification('Резервная копия создана и скачана.');
+             });
+
+             restoreInput.addEventListener('change', (e) => {
+                 const file = e.target.files[0];
+                 if (!file) return;
+
+                 const reader = new FileReader();
+                 reader.onload = (event) => {
+                      try {
+                          const importedData = JSON.parse(event.target.result);
+                          // Use the same import logic as header button
+                          loadImportedData(importedData); // Pass data to loading function
+                          showNotification('Данные успешно восстановлены из файла.');
+                          closeModal(backdrop); // Close modal on success
+                      } catch (error) {
+                          console.error('Error restoring from backup:', error);
+                          showNotification('Ошибка при восстановлении. Проверьте файл.', 'error');
+                      } finally {
+                           restoreInput.value = ''; // Reset input
+                       }
+                 };
+                  reader.onerror = () => {
+                      showNotification('Не удалось прочитать файл.', 'error');
+                      restoreInput.value = ''; // Reset input
+                  };
+                 reader.readAsText(file);
+             });
+
+             // Close modal actions
+             closeBtn.addEventListener('click', () => closeModal(backdrop));
+             backdrop.addEventListener('click', (e) => {
+                 if (e.target === backdrop) closeModal(backdrop);
+             });
+             // Add Esc key listener for modal
+             const escHandler = (e) => {
+                if (e.key === 'Escape') {
+                    closeModal(backdrop);
+                    document.removeEventListener('keydown', escHandler); // Clean up listener
+                }
+             };
+             document.addEventListener('keydown', escHandler);
+             // Ensure listener is removed when modal closes by other means
+             backdrop.addEventListener('closemodal', () => {
+                 document.removeEventListener('keydown', escHandler);
+             });
+
+         }
+
+         // Helper to get current plan data for backup/export
+         function getCurrentPlanData() {
+              const checklistData = {};
+              const checkboxStates = JSON.parse(localStorage.getItem('gameMarketingPlanProgress') || '{}'); // Get saved state as base
+
+              sections.forEach(section => {
+                  checklistData[section] = [];
+                  document.querySelectorAll(`.checklist-container[data-section="${section}"] .checklist-item`).forEach(item => {
+                      const checkbox = item.querySelector('input[type="checkbox"]');
+                      if (!checkbox) return;
+                      const checkboxId = checkbox.id;
+                      // Get potentially updated state from DOM or fallback to saved state
+                      const currentState = {
+                          checked: checkbox.checked,
+                          completedDate: checkbox.getAttribute('data-completed-date') || null,
+                          priority: item.classList.contains('task-high-priority') ? 'high' :
+                                    item.classList.contains('task-optional') ? 'optional' : 'normal',
+                          text: checkboxStates[checkboxId]?.text || item.querySelector('label')?.textContent.replace(/(\(.*\)|важно|опционально)$/, '').trim() || 'Задача без текста',
+                          isCustom: item.hasAttribute('data-custom')
+                      };
+
+                       checklistData[section].push({ id: checkboxId, ...currentState });
+                  });
+              });
+              return checklistData;
+         }
+
+
+        // Helper function to load data (used by import and restore)
+        function loadImportedData(importedData) {
+            const newCheckboxStates = {};
+
+            // Clear existing custom tasks first
+            document.querySelectorAll('.checklist-item[data-custom="true"]').forEach(item => item.remove());
+            // Reset standard tasks
+            document.querySelectorAll('.checklist-item:not([data-custom="true"])').forEach(item => {
+                const checkbox = item.querySelector('input[type="checkbox"]');
+                if (checkbox) {
+                    checkbox.checked = false;
+                    checkbox.removeAttribute('data-completed-date');
+                    removeDateDisplay(checkbox);
+                    setTaskPriority(item, 'normal'); // Reset priority
+                }
+            });
+
+            // Process imported data
+            for (const section in importedData) {
+                if (!sections.includes(section)) continue; // Skip unknown sections
+                const container = document.querySelector(`.checklist-container[data-section="${section}"]`);
+                if (!container) continue;
+
+                importedData[section].forEach(item => {
+                    const checkbox = document.getElementById(item.id);
+                    let targetItem = checkbox ? checkbox.closest('.checklist-item') : null;
+
+                    if (checkbox && targetItem && !item.isCustom) { // Standard task
+                        checkbox.checked = item.checked;
+                        setTaskPriority(targetItem, item.priority || 'normal');
+                        if (item.checked && item.completedDate) {
+                            checkbox.setAttribute('data-completed-date', item.completedDate);
+                            restoreDateDisplay(checkbox);
+                        } else {
+                            checkbox.removeAttribute('data-completed-date');
+                            removeDateDisplay(checkbox);
+                        }
+                        newCheckboxStates[item.id] = { ...item };
+                    } else if (item.id && item.text && item.isCustom && container) { // Custom task
+                         if (!document.getElementById(item.id)) { // Avoid duplicates
+                            targetItem = addChecklistItem(container, section, item.text, item.id, item.checked, item.completedDate, false, item.priority || 'normal');
+                            targetItem.setAttribute('data-custom', 'true'); // Ensure flag is set
+                            newCheckboxStates[item.id] = { ...item };
+                        }
+                    }
+                });
+                 updateProgress(section); // Update progress after processing section
+             }
+            localStorage.setItem('gameMarketingPlanProgress', JSON.stringify(newCheckboxStates)); // Save imported state
+        }
+
+         // Auto Backup Logic
+         function performAutoBackup() {
+             if (localStorage.getItem('autoBackupEnabled') !== 'true') return;
+
+             console.log("Performing auto backup...");
+             const backupData = getCurrentPlanData();
+             try {
+                  localStorage.setItem('autoBackupData', JSON.stringify(backupData));
+                  const now = Date.now();
+                  localStorage.setItem('lastBackupTime', now.toString());
+                  console.log('Auto backup successful at', new Date(now).toLocaleString());
+                  // Update UI if modal is open
+                  const lastBackupInfo = document.getElementById('last-backup-info');
+                  if (lastBackupInfo) {
+                      lastBackupInfo.textContent = `Последняя авто-копия: ${new Date(now).toLocaleString()}`;
+                  }
+             } catch (e) {
+                  console.error("Auto backup failed:", e);
+                  // Consider notifying the user if storage is full
+              }
+         }
+
+         function checkAutoBackup() {
+             if (localStorage.getItem('autoBackupEnabled') !== 'true') return;
+             const lastBackupTime = parseInt(localStorage.getItem('lastBackupTime') || '0');
+             const now = Date.now();
+             const oneDay = 24 * 60 * 60 * 1000;
+
+             if (now - lastBackupTime > oneDay) {
+                 performAutoBackup();
+             }
+         }
+
+
+        // END OF SCRIPT (ensure no functions are outside DOMContentLoaded unless intended)
+
+    </script>
+
+</body>
+</html>

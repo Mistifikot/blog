@@ -1,0 +1,49 @@
+{
+  "id": "level_1",
+  "name": "Первое испытание",
+  "difficulty": 1.5,
+  "grid_size": {
+    "width": 8,
+    "height": 8
+  },
+  "moves_limit": 25,
+  "goals": [
+    { "type": "collect", "item": "red_gem", "count": 10 },
+    { "type": "collect", "item": "blue_gem", "count": 10 }
+  ],
+  "special_cells": [
+    { "x": 2, "y": 3, "type": "blocker" },
+    { "x": 5, "y": 6, "type": "blocker" },
+    { "x": 4, "y": 2, "type": "blocker" }
+  ],
+  "initial_layout": [
+    ["red", "blue", "green", "yellow", "blue", "red", "green", "yellow"],
+    ["blue", "green", "yellow", "red", "green", "blue", "yellow", "red"],
+    ["green", "yellow", "red", "blue", "yellow", "red", "blue", "green"],
+    ["yellow", "red", "blocker", "yellow", "red", "green", "yellow", "blue"],
+    ["red", "blue", "yellow", "green", "blue", "yellow", "red", "green"],
+    ["blue", "green", "red", "blue", "yellow", "blocker", "green", "yellow"],
+    ["green", "yellow", "blue", "red", "green", "yellow", "blue", "red"],
+    ["yellow", "red", "green", "blue", "red", "green", "yellow", "blue"]
+  ],
+  "special_mechanics": ["cascade_matches"],
+  "time_limit_seconds": null,
+  "star_requirements": [
+    { "stars": 1, "score": 1000 },
+    { "stars": 2, "score": 2000 },
+    { "stars": 3, "score": 3000 }
+  ],
+  "rewards": {
+    "coins": 50,
+    "experience": 10,
+    "items": [
+      { "type": "booster", "id": "extra_moves", "chance": 0.2 }
+    ]
+  },
+  "completion_rate": 0.72,
+  "average_completion_moves": 22.3,
+  "metadata": {
+    "created_at": "2023-10-15T10:00:00Z",
+    "version": "1.0"
+  }
+} 

@@ -1,0 +1,155 @@
+{
+  "models": {},
+  "tools": {
+    "spine": {
+      "type": "mcp",
+      "endpoint": "http://localhost:3005/mcp/execute",
+      "title": "Spine Animation Tools",
+      "description": "Инструменты для работы с анимациями Spine2D",
+      "tools": [
+        {
+          "name": "list-spine-projects",
+          "description": "Получить список доступных проектов Spine"
+        },
+        {
+          "name": "spine-project-details",
+          "description": "Получить детальную информацию о проекте Spine",
+          "parameters": {
+            "projectName": {
+              "type": "string",
+              "description": "Имя проекта Spine"
+            }
+          }
+        },
+        {
+          "name": "export-spine-animation",
+          "description": "Экспортировать анимацию Spine в указанный формат",
+          "parameters": {
+            "projectName": {
+              "type": "string",
+              "description": "Имя проекта Spine для экспорта"
+            },
+            "format": {
+              "type": "string",
+              "description": "Формат экспорта (json, atlas и др.)",
+              "enum": ["json", "atlas", "binary"]
+            },
+            "outputName": {
+              "type": "string",
+              "description": "Имя выходного файла",
+              "optional": true
+            }
+          }
+        },
+        {
+          "name": "generate-spine-animation",
+          "description": "Создать новую анимацию Spine",
+          "parameters": {
+            "name": {
+              "type": "string",
+              "description": "Имя новой анимации"
+            },
+            "description": {
+              "type": "string",
+              "description": "Описание анимации",
+              "optional": true
+            }
+          }
+        }
+      ]
+    },
+    "blender": {
+      "type": "mcp",
+      "endpoint": "http://localhost:9876/mcp/execute",
+      "title": "Blender 3D Tools",
+      "description": "Инструменты для работы с Blender 3D",
+      "tools": [
+        {
+          "name": "list-blender-scenes",
+          "description": "Получить список доступных сцен Blender"
+        },
+        {
+          "name": "render-scene",
+          "description": "Рендеринг сцены в Blender",
+          "parameters": {
+            "scene_name": {
+              "type": "string",
+              "description": "Имя сцены для рендеринга"
+            },
+            "output_path": {
+              "type": "string",
+              "description": "Путь для сохранения рендера",
+              "optional": true
+            }
+          }
+        },
+        {
+          "name": "import-model",
+          "description": "Импортировать 3D модель в Blender",
+          "parameters": {
+            "file_path": {
+              "type": "string",
+              "description": "Путь к файлу модели для импорта"
+            }
+          }
+        }
+      ]
+    }
+  },
+  "mcpServers": {
+    "games-server": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "@modelcontextprotocol/server-filesystem",
+        "C:/Cursor/Games"
+      ]
+    },
+    "figma-server": {
+      "command": "C:\\Users\\User\\AppData\\Roaming\\npm\\figma-developer-mcp.cmd",
+      "args": [
+        "--stdio"
+      ],
+      "env": {
+        "FIGMA_API_KEY": "figd_BjsRz21NL3FLJsBLUauhVUU5OUEtlr9gLD-XvwEZ"
+      }
+    },
+    "windows-cli": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "@simonb97/server-win-cli"
+      ]
+    },
+    "perplexity-ask": {
+      "command": "docker",
+      "args": [
+        "run",
+        "-i",
+        "--rm",
+        "-e",
+        "PERPLEXITY_API_KEY",
+        "mcp/perplexity-ask"
+      ],
+      "env": {
+        "PERPLEXITY_API_KEY": "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"
+      }
+    },
+    "spine-server": {
+      "command": "node",
+      "args": [
+        "C:\\Cursor\\Spine\\mcp-spine\\dist\\server.js",
+        "--stdio"
+      ]
+    },
+    "blender-server": {
+      "command": "python",
+      "args": [
+        "-m",
+        "blender_mcp.server",
+        "--stdio"
+      ],
+      "cwd": "C:\\Cursor\\blender-mcp-clone"
+    }
+  }
+} 

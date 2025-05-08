@@ -1,0 +1,19 @@
+{
+  "mcpServers": {
+    "games-server": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "@modelcontextprotocol/server-filesystem",
+        "C:/Cursor/Games"
+      ]
+    },
+    "windows-cli": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "@simonb97/server-win-cli"
+      ]
+    }
+  }
+} 

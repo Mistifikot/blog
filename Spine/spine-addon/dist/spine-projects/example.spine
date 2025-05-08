@@ -1,0 +1,27 @@
+{
+  "skeleton": {
+    "hash": "",
+    "spine": "4.1.23",
+    "x": 0,
+    "y": 0,
+    "width": 100,
+    "height": 100,
+    "images": "./images/",
+    "audio": ""
+  },
+  "bones": [
+    {
+      "name": "root"
+    }
+  ],
+  "slots": [],
+  "skins": [
+    {
+      "name": "default"
+    }
+  ],
+  "animations": {},
+  "metadata": {
+    "description": "Example Spine Project"
+  }
+}

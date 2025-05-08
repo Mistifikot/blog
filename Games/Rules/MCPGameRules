@@ -1,0 +1,841 @@
+// GameMCPAdapter.js - Универсальный адаптер для интеграции игры с MCP сервером
+const fs = require('fs');
+const path = require('path');
+const { MCPServer, Tool } = require('@anthropic-ai/mcp');
+
+class GameMCPAdapter {
+  constructor(config) {
+    this.config = {
+      gameDataPath: './game-data', // Путь к папке с данными игры
+      outputPath: './generated',   // Путь для сохранения сгенерированных данных
+      port: 3000,                  // Порт для MCP сервера
+      ...config
+    };
+    
+    // Создание папок, если их нет
+    if (!fs.existsSync(this.config.gameDataPath)) {
+      fs.mkdirSync(this.config.gameDataPath, { recursive: true });
+    }
+    if (!fs.existsSync(this.config.outputPath)) {
+      fs.mkdirSync(this.config.outputPath, { recursive: true });
+    }
+    
+    // Инициализация MCP сервера
+    this.mcpServer = new MCPServer();
+    this.registerTools();
+  }
+  
+  // Запуск MCP сервера
+  async start() {
+    try {
+      await this.mcpServer.start({ port: this.config.port });
+      console.log(`MCP Game Adapter запущен на порту ${this.config.port}`);
+    } catch (error) {
+      console.error('Ошибка при запуске MCP сервера:', error);
+      throw error;
+    }
+  }
+  
+  // Остановка MCP сервера
+  async stop() {
+    try {
+      await this.mcpServer.stop();
+      console.log('MCP Game Adapter остановлен');
+    } catch (error) {
+      console.error('Ошибка при остановке MCP сервера:', error);
+    }
+  }
+  
+  // Регистрация инструментов MCP
+  registerTools() {
+    // 1. Получение информации об игре
+    this.mcpServer.addTool({
+      name: 'get_game_info',
+      description: 'Получить основную информацию об игре и доступных данных',
+      parameters: {},
+      async handler() {
+        try {
+          const gameInfo = {
+            availableDataTypes: [
+              'levels', 'items', 'characters', 'economy', 'quests'
+            ],
+            dataFormats: {
+              levels: 'JSON структура, описывающая уровни игры',
+              items: 'JSON структура с параметрами предметов',
+              characters: 'JSON структура персонажей и NPC',
+              economy: 'JSON структура экономических данных',
+              quests: 'JSON структура заданий и квестов'
+            }
+          };
+          
+          return {
+            status: 'success',
+            data: gameInfo
+          };
+        } catch (error) {
+          return {
+            status: 'error',
+            message: error.message
+          };
+        }
+      }
+    });
+    
+    // 2. Получение игровых данных
+    this.mcpServer.addTool({
+      name: 'get_game_data',
+      description: 'Получить игровые данные определенного типа',
+      parameters: {
+        data_type: { 
+          type: 'string', 
+          description: 'Тип данных (levels, items, characters, economy, quests)'
+        }
+      },
+      async handler({ data_type }) {
+        try {
+          const filePath = path.join(this.config.gameDataPath, `${data_type}.json`);
+          
+          if (!fs.existsSync(filePath)) {
+            return {
+              status: 'error',
+              message: `Данные типа "${data_type}" не найдены`
+            };
+          }
+          
+          const data = JSON.parse(fs.readFileSync(filePath, 'utf8'));
+          
+          return {
+            status: 'success',
+            dataType: data_type,
+            data: data
+          };
+        } catch (error) {
+          return {
+            status: 'error',
+            message: error.message
+          };
+        }
+      }
+    });
+    
+    // 3. Генерация нового контента
+    this.mcpServer.addTool({
+      name: 'generate_content',
+      description: 'Генерация нового игрового контента на основе существующих данных',
+      parameters: {
+        content_type: { 
+          type: 'string', 
+          description: 'Тип контента (level, item, character, quest, dialog)'
+        },
+        template: { 
+          type: 'object', 
+          description: 'Шаблон с параметрами для генерации'
+        },
+        reference_data: { 
+          type: 'string', 
+          description: 'Тип референсных данных для генерации',
+          required: false
+        }
+      },
+      async handler({ content_type, template, reference_data }) {
+        try {
+          // Получение референсных данных, если указаны
+          let refData = {};
+          if (reference_data) {
+            const refPath = path.join(this.config.gameDataPath, `${reference_data}.json`);
+            if (fs.existsSync(refPath)) {
+              refData = JSON.parse(fs.readFileSync(refPath, 'utf8'));
+            }
+          }
+          
+          // В реальной реализации здесь был бы вызов ИИ для генерации
+          // Сейчас просто создаем тестовые данные для примера
+          const generatedContent = this.generateMockContent(content_type, template, refData);
+          
+          // Сохранение сгенерированного контента
+          const outputFileName = `${content_type}_${Date.now()}.json`;
+          const outputPath = path.join(this.config.outputPath, outputFileName);
+          fs.writeFileSync(outputPath, JSON.stringify(generatedContent, null, 2));
+          
+          return {
+            status: 'success',
+            contentType: content_type,
+            generatedContent: generatedContent,
+            outputFile: outputFileName
+          };
+        } catch (error) {
+          return {
+            status: 'error',
+            message: error.message
+          };
+        }
+      }
+    });
+    
+    // 4. Анализ игрового баланса
+    this.mcpServer.addTool({
+      name: 'analyze_game_balance',
+      description: 'Анализ баланса игры на основе имеющихся данных',
+      parameters: {
+        data_types: { 
+          type: 'array', 
+          description: 'Типы данных для анализа',
+          items: { type: 'string' }
+        },
+        analysis_type: { 
+          type: 'string', 
+          description: 'Тип анализа (economy, difficulty, progression)',
+          required: false,
+          default: 'economy'
+        }
+      },
+      async handler({ data_types, analysis_type }) {
+        try {
+          // Сбор всех указанных данных
+          const analysisData = {};
+          for (const dataType of data_types) {
+            const filePath = path.join(this.config.gameDataPath, `${dataType}.json`);
+            if (fs.existsSync(filePath)) {
+              analysisData[dataType] = JSON.parse(fs.readFileSync(filePath, 'utf8'));
+            }
+          }
+          
+          // В реальном сценарии здесь был бы вызов ИИ для анализа
+          // Имитация результата анализа
+          const analysisResult = this.generateMockAnalysis(analysis_type, analysisData);
+          
+          // Сохранение результата анализа
+          const outputFileName = `analysis_${analysis_type}_${Date.now()}.json`;
+          const outputPath = path.join(this.config.outputPath, outputFileName);
+          fs.writeFileSync(outputPath, JSON.stringify(analysisResult, null, 2));
+          
+          return {
+            status: 'success',
+            analysisType: analysis_type,
+            result: analysisResult,
+            outputFile: outputFileName
+          };
+        } catch (error) {
+          return {
+            status: 'error',
+            message: error.message
+          };
+        }
+      }
+    });
+    
+    // 5. Импорт сгенерированного контента обратно в игру
+    this.mcpServer.addTool({
+      name: 'import_generated_content',
+      description: 'Импорт сгенерированного контента обратно в игру',
+      parameters: {
+        file_name: { 
+          type: 'string', 
+          description: 'Имя файла с сгенерированным контентом' 
+        },
+        destination_type: { 
+          type: 'string', 
+          description: 'Тип назначения для импорта (gamedir, contentdb, levelpack)',
+          required: false,
+          default: 'gamedir'
+        }
+      },
+      async handler({ file_name, destination_type }) {
+        try {
+          const sourcePath = path.join(this.config.outputPath, file_name);
+          
+          if (!fs.existsSync(sourcePath)) {
+            return {
+              status: 'error',
+              message: `Файл "${file_name}" не найден в папке с сгенерированным контентом`
+            };
+          }
+          
+          // Чтение сгенерированного контента
+          const generatedContent = JSON.parse(fs.readFileSync(sourcePath, 'utf8'));
+          
+          // В реальном сценарии здесь было бы преобразование и импорт в игру
+          // Симуляция импорта
+          const importResult = {
+            importedTo: destination_type,
+            timestamp: new Date().toISOString(),
+            contentSummary: {
+              type: generatedContent.type || "unknown",
+              name: generatedContent.name || file_name,
+              size: Buffer.byteLength(JSON.stringify(generatedContent)),
+              importedSuccessfully: true
+            }
+          };
+          
+          return {
+            status: 'success',
+            result: importResult
+          };
+        } catch (error) {
+          return {
+            status: 'error',
+            message: error.message
+          };
+        }
+      }
+    });
+  }
+  
+  // Методы-заглушки для демонстрации
+  
+  // Имитация генерации контента
+  generateMockContent(contentType, template, refData) {
+    const now = new Date().toISOString();
+    
+    switch (contentType) {
+      case 'level':
+        return {
+          type: 'level',
+          name: template.name || `Generated Level ${now}`,
+          difficulty: template.difficulty || 'medium',
+          width: template.width || 100,
+          height: template.height || 100,
+          terrain: this.generateMockTerrain(template.terrainType || 'forest', template.width || 100, template.height || 100),
+          objects: this.generateMockObjects(template.objectDensity || 0.5, template.width || 100, template.height || 100),
+          enemies: this.generateMockEnemies(template.difficulty || 'medium', template.width || 100, template.height || 100),
+          generatedAt: now
+        };
+        
+      case 'item':
+        return {
+          type: 'item',
+          id: `item_${Date.now()}`,
+          name: template.name || `Generated Item ${now}`,
+          rarity: template.rarity || 'common',
+          properties: {
+            damage: template.damage || 10,
+            durability: template.durability || 100,
+            effects: template.effects || []
+          },
+          description: template.description || 'Automatically generated item',
+          generatedAt: now
+        };
+        
+      case 'character':
+        return {
+          type: 'character',
+          id: `npc_${Date.now()}`,
+          name: template.name || `Generated NPC ${now}`,
+          characterClass: template.characterClass || 'merchant',
+          level: template.level || 1,
+          stats: {
+            health: template.health || 100,
+            strength: template.strength || 10,
+            intelligence: template.intelligence || 10
+          },
+          dialog: this.generateMockDialog(template.dialogType || 'greeting', template.name || 'NPC'),
+          inventory: this.generateMockInventory(template.inventorySize || 5, template.characterClass || 'merchant'),
+          generatedAt: now
+        };
+        
+      case 'quest':
+        return {
+          type: 'quest',
+          id: `quest_${Date.now()}`,
+          name: template.name || `Generated Quest ${now}`,
+          difficulty: template.difficulty || 'medium',
+          description: template.description || 'Automatically generated quest',
+          objectives: this.generateMockObjectives(template.objectiveCount || 3, template.questType || 'collection'),
+          rewards: this.generateMockRewards(template.difficulty || 'medium'),
+          generatedAt: now
+        };
+        
+      case 'dialog':
+        return {
+          type: 'dialog',
+          id: `dialog_${Date.now()}`,
+          characterId: template.characterId || `npc_${Date.now()}`,
+          tree: this.generateMockDialogTree(template.dialogComplexity || 'medium', template.dialogTone || 'neutral'),
+          generatedAt: now
+        };
+        
+      default:
+        return {
+          type: contentType,
+          name: `Unknown content type ${contentType}`,
+          message: 'This content type is not supported for generation',
+          generatedAt: now
+        };
+    }
+  }
+  
+  // Имитация анализа игрового баланса
+  generateMockAnalysis(analysisType, data) {
+    const now = new Date().toISOString();
+    
+    switch (analysisType) {
+      case 'economy':
+        return {
+          type: 'economic_analysis',
+          timestamp: now,
+          findings: [
+            {
+              severity: 'high',
+              issue: 'Currency inflation',
+              description: 'Игровая валюта слишком доступна, что снижает ее ценность',
+              recommendation: 'Увеличить стоимость предметов или снизить количество валюты, получаемой за задания'
+            },
+            {
+              severity: 'medium',
+              issue: 'Resource imbalance',
+              description: 'Редкие ресурсы слишком часто встречаются в игровом мире',
+              recommendation: 'Снизить частоту появления редких ресурсов на 30%'
+            }
+          ],
+          economicIndicators: {
+            averagePlayerWealth: 5000,
+            wealthDistribution: 'uneven',
+            resourceScarcity: 'low',
+            tradingVolume: 'high'
+          }
+        };
+        
+      case 'difficulty':
+        return {
+          type: 'difficulty_analysis',
+          timestamp: now,
+          findings: [
+            {
+              severity: 'medium',
+              issue: 'Difficulty spike',
+              description: 'Слишком резкий скачок сложности между уровнями 5 и 6',
+              recommendation: 'Добавить промежуточные испытания или снизить сложность уровня 6'
+            },
+            {
+              severity: 'low',
+              issue: 'Enemy scaling',
+              description: 'Масштабирование врагов не соответствует развитию персонажа игрока',
+              recommendation: 'Пересмотреть кривую роста силы врагов, чтобы она лучше соответствовала прогрессу игрока'
+            }
+          ],
+          difficultyMetrics: {
+            playerProgression: 'fast',
+            completionRate: 'medium',
+            frustrationPoints: ['level6', 'boss3'],
+            recommendedAdjustments: '-15% hp for level 6 enemies'
+          }
+        };
+        
+      case 'progression':
+        return {
+          type: 'progression_analysis',
+          timestamp: now,
+          findings: [
+            {
+              severity: 'high',
+              issue: 'Content gap',
+              description: 'Недостаточно контента между 15 и 20 уровнями персонажа',
+              recommendation: 'Добавить 3-5 дополнительных заданий для этого диапазона уровней'
+            },
+            {
+              severity: 'medium',
+              issue: 'Skill acquisition',
+              description: 'Некоторые ключевые навыки открываются слишком поздно',
+              recommendation: 'Перераспределить порядок получения навыков, чтобы базовые способности были доступны раньше'
+            }
+          ],
+          progressionMetrics: {
+            averagePlayTime: '35 hours',
+            completionRate: '68%',
+            playerDropoffPoints: [{ level: 17, reason: 'content gap' }],
+            recommendedImprovements: '+ 4 quests between levels 15-20'
+          }
+        };
+        
+      default:
+        return {
+          type: 'generic_analysis',
+          timestamp: now,
+          message: `Анализ типа "${analysisType}" не поддерживается`,
+          availableTypes: ['economy', 'difficulty', 'progression']
+        };
+    }
+  }
+  
+  // Вспомогательные методы для генерации тестовых данных
+  
+  generateMockTerrain(terrainType, width, height) {
+    // Заглушка для генерации данных о местности
+    return {
+      type: terrainType,
+      dimension: { width, height },
+      biome: terrainType === 'forest' ? 'woodland' : terrainType === 'desert' ? 'arid' : 'temperate',
+      features: ['hills', 'rivers', terrainType === 'forest' ? 'trees' : 'rocks'],
+      generationSeed: Math.floor(Math.random() * 1000000)
+    };
+  }
+  
+  generateMockObjects(density, width, height) {
+    // Заглушка для генерации игровых объектов
+    const count = Math.floor(width * height * density / 100);
+    const objects = [];
+    
+    for (let i = 0; i < count; i++) {
+      objects.push({
+        id: `obj_${i}`,
+        type: ['chest', 'crate', 'sign', 'rock', 'plant'][Math.floor(Math.random() * 5)],
+        position: {
+          x: Math.floor(Math.random() * width),
+          y: Math.floor(Math.random() * height)
+        },
+        properties: {}
+      });
+    }
+    
+    return objects;
+  }
+  
+  generateMockEnemies(difficulty, width, height) {
+    // Заглушка для генерации врагов
+    const difficultyMultiplier = difficulty === 'easy' ? 0.5 : 
+                                difficulty === 'medium' ? 1 : 
+                                difficulty === 'hard' ? 2 : 1;
+    
+    const count = Math.floor((width * height) / 1000 * difficultyMultiplier);
+    const enemies = [];
+    
+    for (let i = 0; i < count; i++) {
+      enemies.push({
+        id: `enemy_${i}`,
+        type: ['goblin', 'skeleton', 'wolf', 'bandit', 'spider'][Math.floor(Math.random() * 5)],
+        level: Math.floor(Math.random() * 5) + (difficulty === 'easy' ? 1 : 
+                                               difficulty === 'medium' ? 3 : 
+                                               difficulty === 'hard' ? 5 : 3),
+        position: {
+          x: Math.floor(Math.random() * width),
+          y: Math.floor(Math.random() * height)
+        },
+        stats: {
+          health: (50 + Math.floor(Math.random() * 50)) * difficultyMultiplier,
+          damage: (5 + Math.floor(Math.random() * 10)) * difficultyMultiplier
+        }
+      });
+    }
+    
+    return enemies;
+  }
+  
+  generateMockDialog(dialogType, npcName) {
+    // Заглушка для генерации диалога
+    switch (dialogType) {
+      case 'greeting':
+        return {
+          initial: `Приветствую, путник! Меня зовут ${npcName}.`,
+          responses: [
+            { text: "Здравствуй! Что ты здесь делаешь?", nextId: "purpose" },
+            { text: "У тебя есть товары на продажу?", nextId: "shop" },
+            { text: "Прощай.", nextId: null }
+          ],
+          dialogTree: {
+            "purpose": {
+              text: "Я охраняю этот перекрёсток и помогаю путникам.",
+              responses: [
+                { text: "Понятно. У тебя есть товары?", nextId: "shop" },
+                { text: "Спасибо за информацию, прощай.", nextId: null }
+              ]
+            },
+            "shop": {
+              text: "Конечно! Вот что у меня есть на продажу.",
+              responses: [
+                { text: "Покажи свои товары", nextId: "show_items" },
+                { text: "Может в другой раз. Прощай.", nextId: null }
+              ]
+            },
+            "show_items": {
+              text: "Выбирай что тебе по душе!",
+              responses: [
+                { text: "Спасибо, до свидания.", nextId: null }
+              ]
+            }
+          }
+        };
+      default:
+        return {
+          initial: `Здравствуй, я ${npcName}. Чем могу помочь?`,
+          responses: [
+            { text: "Ничем, просто осматриваюсь.", nextId: null }
+          ]
+        };
+    }
+  }
+  
+  generateMockInventory(size, npcType) {
+    // Заглушка для генерации инвентаря
+    const inventory = [];
+    
+    const itemTypes = {
+      'merchant': ['potion', 'scroll', 'weapon', 'armor', 'food'],
+      'warrior': ['weapon', 'armor', 'shield', 'potion'],
+      'mage': ['scroll', 'wand', 'robe', 'potion', 'book'],
+      'thief': ['dagger', 'lockpick', 'poison', 'light_armor'],
+      'default': ['potion', 'food', 'trinket']
+    };
+    
+    const items = itemTypes[npcType] || itemTypes.default;
+    
+    for (let i = 0; i < size; i++) {
+      inventory.push({
+        id: `item_${i}`,
+        type: items[Math.floor(Math.random() * items.length)],
+        name: `${['Простой', 'Обычный', 'Редкий', 'Особый'][Math.floor(Math.random() * 4)]} ${items[Math.floor(Math.random() * items.length)]}`,
+        quantity: Math.floor(Math.random() * 5) + 1,
+        value: Math.floor(Math.random() * 100) + 1
+      });
+    }
+    
+    return inventory;
+  }
+  
+  generateMockObjectives(count, questType) {
+    // Заглушка для генерации целей квеста
+    const objectives = [];
+    
+    const objectiveTypes = {
+      'collection': ['collect', 'gather', 'find'],
+      'kill': ['defeat', 'eliminate', 'kill'],
+      'escort': ['escort', 'protect', 'defend'],
+      'exploration': ['explore', 'discover', 'map'],
+      'default': ['complete', 'achieve', 'finish']
+    };
+    
+    const actions = objectiveTypes[questType] || objectiveTypes.default;
+    
+    for (let i = 0; i < count; i++) {
+      const action = actions[Math.floor(Math.random() * actions.length)];
+      
+      objectives.push({
+        id: `objective_${i}`,
+        description: `${action} ${this.getRandomObjectiveTarget(action)}`,
+        quantity: action === 'collect' || action === 'gather' || action === 'defeat' || action === 'eliminate' || action === 'kill' ? Math.floor(Math.random() * 10) + 1 : 1,
+        completed: false
+      });
+    }
+    
+    return objectives;
+  }
+  
+  getRandomObjectiveTarget(action) {
+    // Заглушка для генерации цели задания
+    const targets = {
+      'collect': ['herbs', 'minerals', 'artifacts', 'resources', 'ingredients'],
+      'gather': ['wood', 'stone', 'food', 'supplies', 'materials'],
+      'find': ['treasure', 'map', 'person', 'item', 'location'],
+      'defeat': ['enemies', 'monsters', 'bandits', 'creatures', 'boss'],
+      'eliminate': ['threat', 'monsters', 'enemy camp', 'infestation', 'corruption'],
+      'kill': ['monsters', 'boss', 'beasts', 'enemy leader', 'dragon'],
+      'escort': ['merchant', 'noble', 'child', 'caravan', 'diplomat'],
+      'protect': ['village', 'caravan', 'person', 'artifact', 'location'],
+      'defend': ['town', 'outpost', 'castle', 'villagers', 'supplies'],
+      'explore': ['cave', 'ruin', 'forest', 'dungeon', 'mountain'],
+      'discover': ['location', 'secret', 'treasure', 'passage', 'civilization'],
+      'map': ['territory', 'dungeon', 'island', 'region', 'wilderness'],
+      'default': ['the objective', 'the task', 'the mission', 'the quest']
+    };
+    
+    const possibleTargets = targets[action] || targets.default;
+    return possibleTargets[Math.floor(Math.random() * possibleTargets.length)];
+  }
+  
+  generateMockRewards(difficulty) {
+    // Заглушка для генерации наград
+    const difficultyMultiplier = difficulty === 'easy' ? 1 : 
+                               difficulty === 'medium' ? 2 : 
+                               difficulty === 'hard' ? 4 : 2;
+    
+    return {
+      experience: 100 * difficultyMultiplier,
+      gold: 50 * difficultyMultiplier,
+      items: new Array(Math.floor(Math.random() * 3) + 1).fill(0).map((_, i) => ({
+        id: `reward_item_${i}`,
+        type: ['weapon', 'armor', 'potion', 'scroll', 'trinket'][Math.floor(Math.random() * 5)],
+        name: `${['Common', 'Uncommon', 'Rare', 'Epic'][Math.min(3, Math.floor(difficultyMultiplier - 1))]} Item`,
+        quality: difficultyMultiplier
+      }))
+    };
+  }
+  
+  generateMockDialogTree(complexity, tone) {
+    // Заглушка для генерации диалогового дерева
+    const baseDialog = {
+      initial: {
+        text: this.getDialogText('greeting', tone),
+        options: [
+          { id: "ask_quest", text: "Есть ли у тебя задание для меня?" },
+          { id: "ask_location", text: "Где я могу найти ближайший город?" },
+          { id: "goodbye", text: "Прощай." }
+        ]
+      },
+      nodes: {
+        "ask_quest": {
+          text: this.getDialogText('quest', tone),
+          options: [
+            { id: "accept_quest", text: "Я принимаю задание." },
+            { id: "reject_quest", text: "Извини, я не заинтересован." },
+            { id: "ask_reward", text: "Какая награда меня ждет?" }
+          ]
+        },
+        "ask_location": {
+          text: this.getDialogText('location', tone),
+          options: [
+            { id: "thank_info", text: "Спасибо за информацию." },
+            { id: "ask_dangers", text: "Есть ли опасности по пути?" }
+          ]
+        },
+        "goodbye": {
+          text: this.getDialogText('goodbye', tone),
+          options: []
+        },
+        "accept_quest": {
+          text: this.getDialogText('accept', tone),
+          options: [
+            { id: "goodbye", text: "Я вернусь, когда выполню задание." }
+          ]
+        },
+        "reject_quest": {
+          text: this.getDialogText('reject', tone),
+          options: [
+            { id: "goodbye", text: "Прощай." }
+          ]
+        },
+        "ask_reward": {
+          text: this.getDialogText('reward', tone),
+          options: [
+            { id: "accept_quest", text: "Хорошо, я берусь за это задание." },
+            { id: "reject_quest", text: "Награда не стоит риска." }
+          ]
+        },
+        "thank_info": {
+          text: this.getDialogText('thanks', tone),
+          options: [
+            { id: "goodbye", text: "Прощай." }
+          ]
+        },
+        "ask_dangers": {
+          text: this.getDialogText('danger', tone),
+          options: [
+            { id: "thank_info", text: "Спасибо за предупреждение." },
+            { id: "goodbye", text: "Мне пора идти." }
+          ]
+        }
+      }
+    };
+    
+    // Для сложных диалогов добавляем дополнительные узлы
+    if (complexity === 'complex' || complexity === 'hard') {
+      baseDialog.nodes["ask_history"] = {
+        text: this.getDialogText('history', tone),
+        options: [
+          { id: "more_history", text: "Расскажи подробнее." },
+          { id: "goodbye", text: "Интересная история, но мне пора." }
+        ]
+      };
+      
+      baseDialog.nodes["more_history"] = {
+        text: this.getDialogText('more_history', tone),
+        options: [
+          { id: "thank_info", text: "Спасибо за рассказ." },
+          { id: "goodbye", text: "Мне нужно идти." }
+        ]
+      };
+      
+      // Добавляем новую опцию к начальному диалогу
+      baseDialog.initial.options.splice(2, 0, { id: "ask_history", text: "Расскажи мне об истории этих мест." });
+    }
+    
+    return baseDialog;
+  }
+  
+  getDialogText(type, tone) {
+    // Заглушка для генерации текста диалога
+    const dialogTexts = {
+      'greeting': {
+        'friendly': "Приветствую тебя, друг! Рад видеть новое лицо в наших краях.",
+        'neutral': "Здравствуй, путник. Чем могу помочь?",
+        'hostile': "Что тебе нужно? У меня нет времени на пустые разговоры."
+      },
+      'quest': {
+        'friendly': "О, замечательно, что ты спросил! У меня как раз есть важное поручение. Нам нужно доставить лекарства в соседнюю деревню, которая страдает от странной болезни.",
+        'neutral': "Есть одно задание. Нужно доставить лекарства в деревню неподалеку.",
+        'hostile': "Хочешь задание? Отнеси лекарства в деревню. Справишься?"
+      },
+      'location': {
+        'friendly': "Ближайший город? Конечно, я подробно объясню! Иди по главной дороге на восток примерно два часа пути, затем у развилки с большим дубом поверни налево. Еще через час увидишь городские стены.",
+        'neutral': "Ближайший город находится в трех часах пути на восток. У развилки поверни налево.",
+        'hostile': "На восток. Три часа пути. Только не заблудись."
+      },
+      'goodbye': {
+        'friendly': "Было приятно познакомиться! Удачи тебе в путешествиях, и возвращайся еще!",
+        'neutral': "Прощай. Удачной дороги.",
+        'hostile': "Наконец-то. Не задерживайся."
+      },
+      'accept': {
+        'friendly': "Замечательно! Ты не представляешь, как я благодарен! Уверен, ты отлично справишься с этим заданием.",
+        'neutral': "Хорошо. Выполни задание и возвращайся за наградой.",
+        'hostile': "Надеюсь, ты не облажаешься, как остальные."
+      },
+      'reject': {
+        'friendly': "О, очень жаль! Но я понимаю, у каждого свои дела и заботы. Может, в другой раз?",
+        'neutral': "Понятно. Если передумаешь, ты знаешь, где меня найти.",
+        'hostile': "Типично. Никто не хочет делать настоящую работу."
+      },
+      'reward': {
+        'friendly': "Награда? Конечно! Мы собрали 200 золотых монет и редкий магический свиток. Это ценная награда за такую важную задачу!",
+        'neutral': "200 золотых и магический свиток.",
+        'hostile': "200 монет. Свиток какой-то магический. Бери или уходи."
+      },
+      'thanks': {
+        'friendly': "Всегда пожалуйста! Рад помочь доброму путнику. Если понадобится еще какая-то информация, обращайся!",
+        'neutral': "Не за что.",
+        'hostile': "Угу."
+      },
+      'danger': {
+        'friendly': "О, спасибо что спросил! Будь осторожен, в лесу видели странных существ. Держись дороги и не ходи ночью.",
+        'neutral': "В лесу опасно. Держись дороги и путешествуй днем.",
+        'hostile': "Лес кишит монстрами. Твоя проблема, если пойдешь туда."
+      },
+      'history': {
+        'friendly': "О, история этих мест очень богата и интересна! Наша деревня была основана 200 лет назад храбрыми поселенцами, бежавшими от войны на севере.",
+        'neutral': "Эта деревня существует около 200 лет. Основана беженцами с севера.",
+        'hostile': "Какая разница? Деревня как деревня, ничего особенного."
+      },
+      'more_history': {
+        'friendly': "С удовольствием расскажу! За эти 200 лет мы пережили много событий. Самое значимое - это великое наводнение 50 лет назад, когда река вышла из берегов и смыла половину домов. Но мы восстановились и стали только сильнее!",
+        'neutral': "50 лет назад было сильное наводнение. Разрушило много домов. Деревню восстановили.",
+        'hostile': "Было наводнение. Дома смыло. Выжили. Конец истории."
+      }
+    };
+    
+    return dialogTexts[type]?.[tone] || `Текст для типа "${type}" и тона "${tone}" отсутствует.`;
+  }
+}
+
+module.exports = GameMCPAdapter;
+
+// Пример использования
+/*
+const adapter = new GameMCPAdapter({
+  gameDataPath: './my-game-data',
+  outputPath: './generated-content',
+  port: 3001
+});
+
+adapter.start()
+  .then(() => {
+    console.log('MCP Game Adapter запущен и готов к работе!');
+    
+    // При завершении работы
+    process.on('SIGINT', async () => {
+      await adapter.stop();
+      process.exit(0);
+    });
+  })
+  .catch(error => {
+    console.error('Ошибка при запуске MCP Game Adapter:', error);
+    process.exit(1);
+  });
+*/

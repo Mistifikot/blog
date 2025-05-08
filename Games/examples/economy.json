@@ -1,0 +1,139 @@
+{
+  "currency": {
+    "soft_currency": {
+      "name": "Coins",
+      "icon": "coin_icon.png",
+      "daily_income": {
+        "free": 50,
+        "premium": 100
+      },
+      "sources": [
+        {"type": "level_completion", "amount": "25-75"},
+        {"type": "daily_quest", "amount": "10-50"},
+        {"type": "ads_reward", "amount": 25},
+        {"type": "friend_gift", "amount": 10}
+      ],
+      "max_storage": 9999
+    },
+    "hard_currency": {
+      "name": "Gems",
+      "icon": "gem_icon.png",
+      "daily_income": {
+        "free": 1,
+        "premium": 5
+      },
+      "sources": [
+        {"type": "purchase", "exchange_rate": [{"usd": 0.99, "amount": 10}]},
+        {"type": "achievement", "amount": "1-5"},
+        {"type": "special_event", "amount": "2-10"}
+      ],
+      "max_storage": 999
+    },
+    "energy": {
+      "name": "Energy",
+      "icon": "energy_icon.png",
+      "max_storage": 50,
+      "cost_per_level": 5,
+      "regeneration_rate": "1 per 5 minutes",
+      "refill_cost": {"currency": "gems", "amount": 5},
+      "full_refill_minutes": 250
+    }
+  },
+  "items": {
+    "boosters": [
+      {
+        "id": "extra_moves",
+        "name": "Extra Moves",
+        "description": "+5 ходов к текущему уровню",
+        "price": {"currency": "coins", "amount": 100},
+        "premium_price": {"currency": "coins", "amount": 80}
+      },
+      {
+        "id": "color_bomb",
+        "name": "Color Bomb",
+        "description": "Убирает все фишки одного цвета",
+        "price": {"currency": "coins", "amount": 150},
+        "premium_price": {"currency": "coins", "amount": 120}
+      }
+    ],
+    "powerups": [
+      {
+        "id": "auto_shuffle",
+        "name": "Auto Shuffle",
+        "description": "Автоматически перемешивает поле при отсутствии ходов",
+        "price": {"currency": "gems", "amount": 5},
+        "duration": "1 day"
+      },
+      {
+        "id": "double_points",
+        "name": "Double Points",
+        "description": "Удваивает очки за каждый ход",
+        "price": {"currency": "gems", "amount": 10},
+        "duration": "30 minutes"
+      }
+    ]
+  },
+  "store": {
+    "daily_deals": {
+      "refresh_interval": "24 hours",
+      "slots": 3,
+      "discount_range": "10%-30%"
+    },
+    "special_offers": {
+      "trigger_events": ["first_purchase", "level_completion", "return_after_absence"],
+      "max_concurrent": 2
+    },
+    "bundles": [
+      {
+        "id": "starter_pack",
+        "name": "Starter Pack",
+        "price": {"usd": 1.99},
+        "contents": [
+          {"type": "gems", "amount": 25},
+          {"type": "coins", "amount": 500},
+          {"type": "booster", "id": "extra_moves", "amount": 3}
+        ],
+        "value_multiplier": 3.5
+      },
+      {
+        "id": "premium_bundle",
+        "name": "Premium Bundle",
+        "price": {"usd": 4.99},
+        "contents": [
+          {"type": "gems", "amount": 75},
+          {"type": "coins", "amount": 1500},
+          {"type": "booster", "id": "color_bomb", "amount": 5},
+          {"type": "powerup", "id": "auto_shuffle", "duration": "7 days"}
+        ],
+        "value_multiplier": 4.2
+      }
+    ]
+  },
+  "progression": {
+    "level_scaling": {
+      "difficulty_curve": "exponential",
+      "coin_rewards_growth": 1.05,
+      "experience_requirements_growth": 1.15
+    },
+    "player_levels": {
+      "max_level": 50,
+      "benefits": [
+        {"level": 5, "reward": {"type": "unlock", "feature": "daily_quests"}},
+        {"level": 10, "reward": {"type": "item", "id": "auto_shuffle", "duration": "3 days"}},
+        {"level": 20, "reward": {"type": "currency", "id": "gems", "amount": 20}}
+      ]
+    }
+  },
+  "monetization_metrics": {
+    "arpu": 0.15,
+    "conversion_rate": 0.05,
+    "average_session_count": 3.2,
+    "day_1_retention": 0.40,
+    "day_7_retention": 0.15,
+    "day_30_retention": 0.05
+  },
+  "metadata": {
+    "version": "1.2",
+    "last_updated": "2023-11-01T00:00:00Z"
+  }
+} 

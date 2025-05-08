@@ -1,0 +1,23 @@
+{
+  "name": "mcp-local",
+  "version": "1.0.0",
+  "description": "MCP server for providing access to games data",
+  "main": "dist/server.js",
+  "type": "module",
+  "scripts": {
+    "build": "tsc",
+    "start": "node dist/server.js",
+    "start:http": "node dist/http-server.js",
+    "dev": "tsc -w & node --watch dist/server.js",
+    "dev:http": "tsc -w & node --watch dist/http-server.js"
+  },
+  "keywords": ["mcp", "games", "spectrum"],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.7.0",
+    "@types/node": "^20.11.20",
+    "typescript": "^5.3.3",
+    "zod": "^3.22.4"
+  }
+}
