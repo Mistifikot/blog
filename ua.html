@@ -146,6 +146,7 @@
             z-index: 100;
             border-bottom: 1px solid rgba(108, 92, 231, 0.1);
             box-shadow: var(--shadow);
+            transition: transform 0.3s;
         }
         
         .nav {
@@ -1276,6 +1277,21 @@
             
             document.querySelectorAll('section').forEach(section => {
                 observer.observe(section);
+            });
+
+            // Ховаємо хедер при прокручуванні на мобільних пристроях
+            const header = document.querySelector('.header');
+            let lastScroll = 0;
+
+            window.addEventListener('scroll', function() {
+                if (window.innerWidth > 768) return;
+                const current = window.pageYOffset || document.documentElement.scrollTop;
+                if (current > lastScroll && current > 50) {
+                    header.style.transform = 'translateY(-100%)';
+                } else {
+                    header.style.transform = '';
+                }
+                lastScroll = current <= 0 ? 0 : current;
             });
             
             // Магические частицы при наведении на заголовки и кнопки
