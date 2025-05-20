@@ -3,30 +3,62 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>IndiumLab Blog</title>
+    <title>IndiumLab • Game Design Hub</title>
     <style>
-        body { font-family: sans-serif; display:flex; justify-content:center; align-items:center; min-height:100vh; background:#f8f9fc; margin:0; }
-        .lang-select { text-align:center; }
-        .lang-select h1 { margin-bottom:20px; }
-        .lang-select a {
-            display:block;
-            margin:10px auto;
-            width:200px;
-            padding:10px;
-            background:#5e55d9;
-            color:#fff;
-            text-decoration:none;
-            border-radius:6px;
+        body {
+            margin: 0;
+            font-family: 'Inter', 'Segoe UI', sans-serif;
+            min-height: 100vh;
+            background: linear-gradient(135deg, #1a1d28, #353949);
+            color: #fff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
-        .lang-select a:hover { background:#4540a8; }
+        .wrapper {
+            text-align: center;
+            padding: 20px;
+        }
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+        }
+        .tagline {
+            font-size: 1.1rem;
+            margin-bottom: 40px;
+            color: #ccc;
+        }
+        .lang-links {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+        .lang-links a {
+            display: inline-block;
+            padding: 12px 20px;
+            background: #5e55d9;
+            border-radius: 8px;
+            text-decoration: none;
+            color: #fff;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+            transition: background 0.3s, transform 0.3s;
+        }
+        .lang-links a:hover {
+            background: #8077e8;
+            transform: translateY(-3px);
+        }
     </style>
 </head>
 <body>
-    <div class="lang-select">
-        <h1>Select language</h1>
-        <a href="ru.html">Русский</a>
-        <a href="en.html">English</a>
-        <a href="ua.html">Українська</a>
+    <div class="wrapper">
+        <h1>IndiumLab</h1>
+        <p class="tagline">Game design insights and articles</p>
+        <div class="lang-links">
+            <a href="ru.html">Русский</a>
+            <a href="en.html">English</a>
+            <a href="ua.html">Українська</a>
+        </div>
     </div>
 </body>
 </html>
