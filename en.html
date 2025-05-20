@@ -665,75 +665,75 @@
 
     <!-- Главный контент -->
     <div class="container">
-        <!-- Введение -->
+        <!-- Introduction -->
         <section id="intro" class="fade-in">
-            <h1>Эволюция Game Design Document в эпоху ИИ</h1>
-            
+            <h1>Evolution of the Game Design Document in the AI Era</h1>
+
             <div class="card">
-                <h2>Введение</h2>
-                <p>Как практикующий геймдизайнер и продюсер, за 15 лет я прошел через множество вариантов организации проектной документации в разных форматах, в самых разных проектах и компаниях.</p>
-                
-                <p>Я работал с компаниями по всему миру (USA, Europe, CIS), кроме Азии. (Кстати, если кто-то знает про особенности написания GDD в азиатских компаниях, с удовольствием бы изучил этот опыт.) Было все: от маленьких команд из трех человек до огромных корпораций с коллективом в 500+ сотрудников. Работал как с «ноунеймами», так и с известными на весь мир компаниями (Snapchat, Facebook, Big Fish и т.д.). Я управлял и отделами геймдизайна, и полноценными разработческими командами из ~50 человек.</p>
-                
-                <p>Много лет я писал документы как рядовой геймдизайнер. На позиции Лид ГД принимал и фидбэчил документы других геймдизайнеров, создавал структуры и правила GDD. Позже, став продюсером, уже контролировал все производство и документооборот. И, несмотря на то что сейчас руковожу студией в целом, я продолжаю писать GDD, чтобы «не заржаветь». Я прошел все этапы: от скетча идей в блокноте до поддержки старых легаси-документов, которые тянутся годами.</p>
-                
-                <p>И сейчас при динамичном развитии ИИ и переосмысления подходов к работе я хочу поделиться своим опытом и взглядом на то будущее, что ждет профессию геймдизайнера в ближайшем будущем и инструменты, которые будут важны нам в работе.</p>
+                <h2>Introduction</h2>
+                <p>As a practicing game designer and producer, over 15 years I've gone through many ways of organizing project documentation in different formats across various projects and companies.</p>
+
+                <p>I have worked with companies all over the world (USA, Europe, CIS) except Asia. (By the way, if anyone knows how GDDs are written in Asian companies, I'd love to learn.) I saw everything from small teams of three people to huge corporations with 500+ employees. I've worked with unknown studios as well as world famous companies like Snapchat, Facebook, Big Fish, etc. I managed both game design departments and full development teams of about 50 people.</p>
+
+                <p>For many years I wrote documents as an ordinary game designer. As Lead GD I reviewed documents from other designers and created GDD structures and rules. Later, as a producer, I oversaw all production and document flow. Even now, running the studio as a whole, I continue to write GDDs to stay sharp. I've gone from jotting ideas in a notebook to maintaining old legacy documents that live for years.</p>
+
+                <p>Now, with AI developing rapidly and work approaches being rethought, I want to share my experience and my view of the future awaiting the game design profession and the tools that will be important in our work.</p>
             </div>
-            
+
             <div class="highlight">
-                <h3>О чём эта статья:</h3>
+                <h3>What this article is about:</h3>
                 <ol>
-                    <li>Коротко опишу, как мы дошли до необходимости менять подход.</li>
-                    <li>Расскажу, почему AI - это не просто гость, а полноценный «второй мозг» геймдизайнера.</li>
-                    <li>Покажу, как эти инструменты встраиваются в новый формат GDD: RAG, Оркестрация, AI-агенты и т.д.</li>
-                    <li>Поделюсь итогами и прогнозами, куда это всё нас приведёт.</li>
-                    <li>И немного поговорим об этике и рисках, которые готовит нам будущее</li>
+                    <li>A brief recap of why we need to change our approach.</li>
+                    <li>Why AI is not just a guest but a full-fledged "second brain" for the game designer.</li>
+                    <li>How these tools integrate into the new GDD format: RAG, Orchestration, AI-agents, etc.</li>
+                    <li>Conclusions and forecasts about where this will lead us.</li>
+                    <li>A bit about ethics and risks that the future holds.</li>
                 </ol>
             </div>
         </section>
 
-        <!-- Глава 1 - ГДД-е все начинается -->
+        <!-- Chapter 1 - It all begins with the GDD -->
         <section id="evolution" class="fade-in">
-            <h2>Глава 1 - ГДД-е все начинается</h2>
-            
-            <p>Развитие проектной документации шло параллельно с развитием ИТ, облачных сервисов и принципов построения геймдев-команд, поэтому у меня были разные форматы:</p>
-            
+            <h2>Chapter 1 - It All Begins with the GDD</h2>
+
+            <p>The evolution of project documentation went hand in hand with the development of IT, cloud services and game dev team structures, so I used different formats:</p>
+
             <ul>
-                <li>Текстовые GDD, распечатанные на принтере</li>
-                <li>Microsoft Word и Excel</li>
-                <li>Wiki GDD типа Confluence</li>
-                <li>Google Документы и Таблицы</li>
-                <li>Кастомные решения для больших проектов</li>
-                <li>GDD в Figma или Miro</li>
-                <li>Презентации, питчи, ван-пейджеры и прочее</li>
+                <li>Text GDDs printed on paper</li>
+                <li>Microsoft Word and Excel</li>
+                <li>Wiki GDDs like Confluence</li>
+                <li>Google Docs and Sheets</li>
+                <li>Custom solutions for large projects</li>
+                <li>GDD in Figma or Miro</li>
+                <li>Presentations, pitches, one-pagers and so on</li>
             </ul>
-            
-            <p>Плюс еще множество инструментов для блок-схем, вайрфреймов и т.д.</p>
-            
-            <p>За это время я видел десятки сильнейших геймдизайнеров и множество «любителей», считающих себя гейм дизайнерами. И одно из главных отличий профессионала от «любителя» - это то, как человек умеет структурировать свои мысли и насколько грамотно пишет документацию. Ведь каждый из них имеет свой уникальный стиль написания, уровень детализации и подход к визуализации механик.</p>
-            
-            <p>Однако, как бы крут ни был автор, всегда возникают сложности со стыковкой того, что написано, и пониманием этого текста другими участниками команды. Но об этом чуть дальше.</p>
-            
+
+            <p>Plus many other tools for flowcharts, wireframes, etc.</p>
+
+            <p>Over the years I've met dozens of outstanding game designers and many "hobbyists" who consider themselves game designers. One major difference between a professional and an "amateur" is how well they structure their thoughts and how competently they write documentation. Each has a unique style, level of detail and approach to visualizing mechanics.</p>
+
+            <p>However, no matter how good the author is, there's always trouble aligning what's written with how other team members understand it. More on that later.</p>
+
             <div class="gdd-evolution">
                 <div class="gdd-stage">
                     <span class="badge">1980-2000s</span>
                     <h3>GDD 1.0</h3>
-                    <p>"Библии проекта"</p>
-                    <p>Сотни страниц текста, сложно поддерживать</p>
+                    <p>"Project bibles"</p>
+                    <p>Hundreds of pages of text, hard to maintain</p>
                 </div>
                 <div class="stage-connector"></div>
                 <div class="gdd-stage">
                     <span class="badge">2010-2020s</span>
                     <h3>GDD 2.0</h3>
                     <p>Wiki + Agile</p>
-                    <p>"Just in time" документация, коллективный подход</p>
+                    <p>"Just in time" documentation, collective approach</p>
                 </div>
                 <div class="stage-connector"></div>
                 <div class="gdd-stage current">
                     <span class="badge">2025+</span>
                     <h3>GDD 3.0</h3>
-                    <p>AI-Оракул</p>
-                    <p>Интерактивный, интеллектуальный помощник</p>
+                    <p>AI-Oracle</p>
+                    <p>Interactive, intelligent assistant</p>
                 </div>
             </div>
         </section>
